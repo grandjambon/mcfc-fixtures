@@ -34,6 +34,8 @@
         .league-cup .category-tag { background: #ffc96633; color: #ffc966; }
         .international { background: #2a2a2a; border-color: #888; font-style: italic; opacity: 0.85; }
         .international .category-tag { background: #88888833; color: #888; }
+        .community-shield { background: #3a1a2a; border-color: #ff66a3; }
+        .community-shield .category-tag { background: #ff66a333; color: #ff66a3; }
     </style>
 </head>
 <body>
@@ -45,6 +47,7 @@
         <span><span class="swatch" style="background:#66ff8c"></span> FA Cup</span>
         <span><span class="swatch" style="background:#ffc966"></span> Carabao Cup</span>
         <span><span class="swatch" style="background:#888"></span> International Break</span>
+        <span><span class="swatch" style="background:#ff66a3"></span> Community Shield</span>
     </div>
     <div class="fixture-list" id="fixtures"></div>
     <script>
@@ -53,7 +56,8 @@
             'champions-league': 'UCL',
             'fa-cup': 'FA',
             'league-cup': 'LC',
-            'international': 'INT'
+            'international': 'INT',
+            'community-shield': 'CS'
         };
 
         function formatDate(d) {
