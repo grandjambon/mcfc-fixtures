@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manchester City 2026-27 Fixtures</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1a1a2e; color: #eee; padding: 1.5rem; }
+        h1 { text-align: center; margin-bottom: 0.5rem; color: #6cabdd; }
+        .subtitle { text-align: center; margin-bottom: 1.5rem; color: #888; font-size: 0.85rem; }
+        .legend { display: flex; gap: 1.2rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .legend span { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; }
+        .legend .swatch { width: 12px; height: 12px; border-radius: 3px; }
+        .fixture-list { max-width: 750px; margin: 0 auto; }
+        .month-header { color: #6cabdd; font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; padding-bottom: 0.3rem; border-bottom: 1px solid #333; }
+        .fixture {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.6rem 0.8rem; margin-bottom: 0.4rem;
+            border-radius: 5px; border-left: 4px solid;
+            font-size: 0.9rem;
+        }
+        .fixture .slot-type { font-size: 0.7rem; text-transform: uppercase; opacity: 0.6; min-width: 65px; }
+        .fixture .date { min-width: 110px; font-size: 0.8rem; opacity: 0.7; }
+        .fixture .label { flex: 1; }
+        .fixture .category-tag { font-size: 0.65rem; text-transform: uppercase; padding: 0.15rem 0.4rem; border-radius: 3px; opacity: 0.8; }
+        .premier-league { background: #1c2840; border-color: #6cabdd; }
+        .premier-league .category-tag { background: #6cabdd33; color: #6cabdd; }
+        .champions-league { background: #261840; border-color: #a366ff; }
+        .champions-league .category-tag { background: #a366ff33; color: #a366ff; }
+        .fa-cup { background: #1a3020; border-color: #66ff8c; }
+        .fa-cup .category-tag { background: #66ff8c33; color: #66ff8c; }
+        .league-cup { background: #302818; border-color: #ffc966; }
+        .league-cup .category-tag { background: #ffc96633; color: #ffc966; }
+        .international { background: #2a2a2a; border-color: #888; font-style: italic; opacity: 0.85; }
+        .international .category-tag { background: #88888833; color: #888; }
+    </style>
+</head>
+<body>
+    <h1>Manchester City 2026-27</h1>
+    <p class="subtitle">All competitions &middot; Cup rounds are approximate slots (TBC on draw)</p>
+    <div class="legend">
+        <span><span class="swatch" style="background:#6cabdd"></span> Premier League</span>
+        <span><span class="swatch" style="background:#a366ff"></span> Champions League</span>
+        <span><span class="swatch" style="background:#66ff8c"></span> FA Cup</span>
+        <span><span class="swatch" style="background:#ffc966"></span> Carabao Cup</span>
+        <span><span class="swatch" style="background:#888"></span> International Break</span>
+    </div>
+    <div class="fixture-list" id="fixtures"></div>
+    <script>
+        const categoryLabels = {
+            'premier-league': 'PL',
+            'champions-league': 'UCL',
+            'fa-cup': 'FA',
+            'league-cup': 'LC',
+            'international': 'INT'
+        };
+
+        function formatDate(d) {
+            return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+        }
+
+        function formatDateFull(d) {
+            return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+        }
+
+        fetch('fixtures.json')
+            .then(r => r.json())
+            .then(fixtures => {
+                fixtures.sort((a, b) => new Date(a.date) - new Date(b.date));
+                const container = document.getElementById('fixtures');
+                let currentMonth = '';
+                let html = '';
+
+                fixtures.forEach(f => {
+                    const d = new Date(f.date);
+                    const month = d.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+                    if (month !== currentMonth) {
+                        currentMonth = month;
+                        html += `<div class="month-header">${month}</div>`;
+                    }
+
+                    const hasRange = !!f.dateEnd;
+                    let dateCol, labelText;
+
+                    if (hasRange) {
+                        dateCol = '';
+                        const end = new Date(f.dateEnd);
+                        labelText = `${f.label} (${formatDate(d)} – ${formatDate(end)})`;
+                    } else {
+                        dateCol = formatDateFull(d);
+                        labelText = f.label;
+                    }
+
+                    const tag = categoryLabels[f.category] || '';
+                    html += `<div class="fixture ${f.category}">
+                        <span class="slot-type">${f.slotType}</span>
+                        <span class="date">${dateCol}</span>
+                        <span class="label">${labelText}</span>
+                        <span class="category-tag">${tag}</span>
+                    </div>`;
+                });
+
+                container.innerHTML = html;
+            });
+    </script>
+</body>
+</html>
