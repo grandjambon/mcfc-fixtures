@@ -1,0 +1,57 @@
+{
+  "england": {
+    "league": "A3",
+    "fixtures": [
+      {"date": "2026-09-26", "match": "England v Spain", "venue": "H"},
+      {"date": "2026-09-29", "match": "Czechia v England", "venue": "A"},
+      {"date": "2026-10-03", "match": "Croatia v England", "venue": "A"},
+      {"date": "2026-10-06", "match": "England v Czechia", "venue": "H"},
+      {"date": "2026-11-12", "match": "England v Croatia", "venue": "H"},
+      {"date": "2026-11-15", "match": "Spain v England", "venue": "A"}
+    ]
+  },
+  "scotland": {
+    "league": "B1",
+    "fixtures": [
+      {"date": "2026-09-26", "match": "Slovenia v Scotland", "venue": "A"},
+      {"date": "2026-09-29", "match": "Scotland v Switzerland", "venue": "H"},
+      {"date": "2026-10-03", "match": "North Macedonia v Scotland", "venue": "A"},
+      {"date": "2026-10-06", "match": "Scotland v Slovenia", "venue": "H"},
+      {"date": "2026-11-13", "match": "Scotland v North Macedonia", "venue": "H"},
+      {"date": "2026-11-16", "match": "Switzerland v Scotland", "venue": "A"}
+    ]
+  },
+  "wales": {
+    "league": "A4",
+    "fixtures": [
+      {"date": "2026-09-24", "match": "Portugal v Wales", "venue": "A"},
+      {"date": "2026-09-27", "match": "Denmark v Wales", "venue": "A"},
+      {"date": "2026-10-01", "match": "Wales v Norway", "venue": "H"},
+      {"date": "2026-10-04", "match": "Wales v Denmark", "venue": "H"},
+      {"date": "2026-11-14", "match": "Norway v Wales", "venue": "A"},
+      {"date": "2026-11-17", "match": "Wales v Portugal", "venue": "H"}
+    ]
+  },
+  "northern-ireland": {
+    "league": "B2",
+    "fixtures": [
+      {"date": "2026-09-25", "match": "Georgia v Northern Ireland", "venue": "A"},
+      {"date": "2026-09-28", "match": "Northern Ireland v Hungary", "venue": "H"},
+      {"date": "2026-10-02", "match": "Ukraine v Northern Ireland", "venue": "A"},
+      {"date": "2026-10-05", "match": "Northern Ireland v Georgia", "venue": "H"},
+      {"date": "2026-11-14", "match": "Northern Ireland v Ukraine", "venue": "H"},
+      {"date": "2026-11-17", "match": "Hungary v Northern Ireland", "venue": "A"}
+    ]
+  },
+  "republic-of-ireland": {
+    "league": "B3",
+    "fixtures": [
+      {"date": "2026-09-24", "match": "Kosovo v Republic of Ireland", "venue": "A"},
+      {"date": "2026-09-27", "match": "Israel v Republic of Ireland", "venue": "A"},
+      {"date": "2026-10-01", "match": "Republic of Ireland v Austria", "venue": "H"},
+      {"date": "2026-10-04", "match": "Republic of Ireland v Israel", "venue": "H"},
+      {"date": "2026-11-14", "match": "Austria v Republic of Ireland", "venue": "A"},
+      {"date": "2026-11-17", "match": "Republic of Ireland v Kosovo", "venue": "H"}
+    ]
+  }
+}

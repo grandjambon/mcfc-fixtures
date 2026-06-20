@@ -32,10 +32,19 @@
         .fa-cup .category-tag { background: #66ff8c33; color: #66ff8c; }
         .league-cup { background: #302818; border-color: #ffc966; }
         .league-cup .category-tag { background: #ffc96633; color: #ffc966; }
-        .international { background: #2a2a2a; border-color: #888; font-style: italic; opacity: 0.85; }
+        .international { background: #2a2a2a; border-color: #888; font-style: italic; opacity: 0.85; cursor: pointer; }
         .international .category-tag { background: #88888833; color: #888; }
         .community-shield { background: #3a1a2a; border-color: #ff66a3; }
         .community-shield .category-tag { background: #ff66a333; color: #ff66a3; }
+
+        .intl-panel { display: none; margin: 0 0 0.4rem 0; padding: 0.6rem 0.8rem; background: #222; border-radius: 0 0 5px 5px; border-left: 4px solid #888; margin-top: -0.4rem; }
+        .intl-panel.open { display: block; }
+        .intl-country { margin-bottom: 0.5rem; }
+        .intl-country h4 { font-size: 0.75rem; text-transform: uppercase; color: #aaa; margin-bottom: 0.25rem; letter-spacing: 0.5px; }
+        .intl-match { display: flex; gap: 0.5rem; font-size: 0.8rem; padding: 0.2rem 0; color: #ccc; }
+        .intl-match .intl-date { min-width: 80px; opacity: 0.7; }
+        .intl-match .intl-venue { min-width: 20px; opacity: 0.5; font-size: 0.7rem; }
+        .intl-toggle { font-size: 0.7rem; opacity: 0.5; margin-left: 0.5rem; }
     </style>
 </head>
 <body>
@@ -68,45 +77,102 @@
             return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
         }
 
-        fetch('fixtures.json')
-            .then(r => r.json())
-            .then(fixtures => {
-                fixtures.sort((a, b) => new Date(a.date) - new Date(b.date));
-                const container = document.getElementById('fixtures');
-                let currentMonth = '';
-                let html = '';
+        function formatDateShort(d) {
+            return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+        }
 
-                fixtures.forEach(f => {
-                    const d = new Date(f.date);
-                    const month = d.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
-                    if (month !== currentMonth) {
-                        currentMonth = month;
-                        html += `<div class="month-header">${month}</div>`;
-                    }
+        function getMatchesInWindow(fixtures, startDate, endDate) {
+            return fixtures.filter(m => {
+                const d = new Date(m.date);
+                return d >= startDate && d <= endDate;
+            });
+        }
 
-                    const hasRange = !!f.dateEnd;
-                    let dateCol, labelText;
+        function renderIntlPanel(internationals, startDate, endDate) {
+            const countries = ['england', 'scotland', 'wales', 'northern-ireland', 'republic-of-ireland'];
+            const labels = {
+                'england': 'England',
+                'scotland': 'Scotland',
+                'wales': 'Wales',
+                'northern-ireland': 'Northern Ireland',
+                'republic-of-ireland': 'Republic of Ireland'
+            };
 
-                    if (hasRange) {
-                        dateCol = '';
-                        const end = new Date(f.dateEnd);
-                        labelText = `${f.label} (${formatDate(d)} – ${formatDate(end)})`;
-                    } else {
-                        dateCol = formatDateFull(d);
-                        labelText = f.label;
-                    }
+            let html = '';
+            countries.forEach(country => {
+                const team = internationals[country];
+                if (!team) return;
+                const matches = getMatchesInWindow(team.fixtures, startDate, endDate);
+                if (matches.length === 0) return;
 
-                    const tag = categoryLabels[f.category] || '';
+                html += `<div class="intl-country"><h4>${labels[country]} (League ${team.league})</h4>`;
+                matches.forEach(m => {
+                    const d = new Date(m.date);
+                    html += `<div class="intl-match">
+                        <span class="intl-date">${formatDateShort(d)}</span>
+                        <span>${m.match}</span>
+                        <span class="intl-venue">(${m.venue})</span>
+                    </div>`;
+                });
+                html += `</div>`;
+            });
+            return html;
+        }
+
+        Promise.all([
+            fetch('fixtures.json').then(r => r.json()),
+            fetch('internationals.json').then(r => r.json())
+        ]).then(([fixtures, internationals]) => {
+            fixtures.sort((a, b) => new Date(a.date) - new Date(b.date));
+            const container = document.getElementById('fixtures');
+            let currentMonth = '';
+            let html = '';
+            let panelIndex = 0;
+
+            fixtures.forEach(f => {
+                const d = new Date(f.date);
+                const month = d.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+                if (month !== currentMonth) {
+                    currentMonth = month;
+                    html += `<div class="month-header">${month}</div>`;
+                }
+
+                const hasRange = !!f.dateEnd;
+                let dateCol, labelText;
+
+                if (hasRange) {
+                    dateCol = '';
+                    const end = new Date(f.dateEnd);
+                    labelText = `${f.label} (${formatDate(d)} – ${formatDate(end)})`;
+                } else {
+                    dateCol = formatDateFull(d);
+                    labelText = f.label;
+                }
+
+                const tag = categoryLabels[f.category] || '';
+
+                if (f.category === 'international') {
+                    const pid = `intl-panel-${panelIndex++}`;
+                    html += `<div class="fixture ${f.category}" onclick="document.getElementById('${pid}').classList.toggle('open')">
+                        <span class="slot-type">${f.slotType}</span>
+                        <span class="date">${dateCol}</span>
+                        <span class="label">${labelText}<span class="intl-toggle">▼ click to expand</span></span>
+                        <span class="category-tag">${tag}</span>
+                    </div>`;
+                    const end = new Date(f.dateEnd);
+                    html += `<div class="intl-panel" id="${pid}">${renderIntlPanel(internationals, d, end)}</div>`;
+                } else {
                     html += `<div class="fixture ${f.category}">
                         <span class="slot-type">${f.slotType}</span>
                         <span class="date">${dateCol}</span>
                         <span class="label">${labelText}</span>
                         <span class="category-tag">${tag}</span>
                     </div>`;
-                });
-
-                container.innerHTML = html;
+                }
             });
+
+            container.innerHTML = html;
+        });
     </script>
 </body>
 </html>
