@@ -52,6 +52,7 @@
   {"slotType": "weekend", "date": "2027-03-13", "category": "premier-league", "label": "Coventry City (A)"},
   {"slotType": "midweek", "date": "2027-03-16", "dateEnd": "2027-03-17", "category": "champions-league", "label": "Champions League Round of 16 2nd Leg"},
   {"slotType": "weekend", "date": "2027-03-20", "category": "premier-league", "label": "Manchester United (H)"},
+  {"slotType": "weekend", "date": "2027-03-21", "category": "league-cup", "label": "Carabao Cup Final (Wembley)"},
   {"slotType": "break", "date": "2027-03-22", "dateEnd": "2027-03-30", "category": "international", "label": "International Break"},
   {"slotType": "weekend", "date": "2027-04-03", "dateEnd": "2027-04-04", "category": "fa-cup", "label": "FA Cup Quarter-Final"},
   {"slotType": "midweek", "date": "2027-04-06", "dateEnd": "2027-04-07", "category": "champions-league", "label": "Champions League Quarter-Final 1st Leg"},
