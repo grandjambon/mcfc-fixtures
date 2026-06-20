@@ -36,7 +36,7 @@
   {"slotType": "weekend", "date": "2027-01-16", "category": "premier-league", "label": "Nottingham Forest (H)"},
   {"slotType": "midweek", "date": "2027-01-19", "dateEnd": "2027-01-20", "category": "champions-league", "label": "Champions League Matchday 7"},
   {"slotType": "weekend", "date": "2027-01-23", "category": "premier-league", "label": "Brighton (A)"},
-  {"slotType": "midweek", "date": "2027-01-26", "dateEnd": "2027-01-27", "category": "league-cup", "label": "Carabao Cup Semi-Final 2nd Leg"},
+  {"slotType": "midweek", "date": "2027-02-02", "dateEnd": "2027-02-03", "category": "league-cup", "label": "Carabao Cup Semi-Final 2nd Leg"},
   {"slotType": "midweek", "date": "2027-01-27", "category": "champions-league", "label": "Champions League Matchday 8"},
   {"slotType": "weekend", "date": "2027-01-30", "category": "premier-league", "label": "Arsenal (H)"},
   {"slotType": "weekend", "date": "2027-02-06", "category": "premier-league", "label": "Fulham (A)"},
