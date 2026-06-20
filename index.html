@@ -37,6 +37,21 @@
         .community-shield { background: #3a1a2a; border-color: #ff66a3; }
         .community-shield .category-tag { background: #ff66a333; color: #ff66a3; }
 
+        @media (max-width: 600px) {
+            body { padding: 0.75rem; }
+            .fixture {
+                flex-wrap: wrap; gap: 0.2rem 0.5rem;
+                padding: 0.5rem 0.6rem;
+            }
+            .fixture .slot-type { display: none; }
+            .fixture .date { min-width: auto; font-size: 0.75rem; }
+            .fixture .label { width: 100%; order: 3; font-size: 0.85rem; }
+            .fixture .category-tag { order: 2; }
+            .legend { gap: 0.8rem; }
+            .intl-panel { padding: 0.4rem 0.6rem; }
+            .intl-match { flex-wrap: wrap; gap: 0.1rem 0.4rem; }
+        }
+
         .intl-panel { display: none; margin: 0 0 0.4rem 0; padding: 0.6rem 0.8rem; background: #222; border-radius: 0 0 5px 5px; border-left: 4px solid #888; margin-top: -0.4rem; }
         .intl-panel.open { display: block; }
         .intl-country { margin-bottom: 0.5rem; }
