@@ -86,6 +86,24 @@
             'community-shield': 'CS'
         };
 
+        function shortenLabel(label, category) {
+            if (category === 'champions-league') {
+                return label.replace('Champions League ', 'CL ').replace('Matchday ', 'MD').replace('Knockout Play-off', 'KO Playoff').replace('Round of 16', 'R16').replace('Quarter-Final', 'QF').replace('Semi-Final', 'SF');
+            }
+            if (category === 'fa-cup') {
+                return label.replace('FA Cup ', 'FAC ').replace('Third Round', 'R3').replace('Fourth Round', 'R4').replace('Fifth Round', 'R5').replace('Quarter-Final', 'QF').replace('Semi-Final', 'SF');
+            }
+            if (category === 'league-cup') {
+                return label.replace('Carabao Cup ', 'LC ').replace('Round ', 'R').replace('Quarter-Final', 'QF').replace('Semi-Final', 'SF').replace('Final (Wembley)', 'Final');
+            }
+            if (category === 'international') {
+                return label.replace('International Break', "Int'l Break");
+            }
+            return label;
+        }
+
+        const isMobile = window.innerWidth <= 600;
+
         function formatDate(d) {
             return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
         }
@@ -160,10 +178,11 @@
                 if (hasRange) {
                     dateCol = '';
                     const end = new Date(f.dateEnd);
-                    labelText = `${f.label} (${formatDate(d)} – ${formatDate(end)})`;
+                    const displayLabel = isMobile ? shortenLabel(f.label, f.category) : f.label;
+                    labelText = `${displayLabel} (${formatDate(d)} – ${formatDate(end)})`;
                 } else {
                     dateCol = formatDateFull(d);
-                    labelText = f.label;
+                    labelText = isMobile ? shortenLabel(f.label, f.category) : f.label;
                 }
 
                 const tag = categoryLabels[f.category] || '';
