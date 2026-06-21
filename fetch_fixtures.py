@@ -69,10 +69,11 @@ def is_weekend(date_str):
 
 
 def utc_to_uk(utc_date_str):
-    """Convert UTC datetime string to UK time (BST/GMT) and return HH:MM or None if midnight."""
+    """Convert UTC datetime string to UK time (BST/GMT) and return HH:MM or None if time is a placeholder."""
     from datetime import datetime, timedelta
     dt = datetime.fromisoformat(utc_date_str.replace("Z", "+00:00")).replace(tzinfo=None)
-    if dt.hour == 0 and dt.minute == 0:
+    # Treat 00:00 and 12:00 UTC as "no time confirmed"
+    if (dt.hour, dt.minute) in [(0, 0), (12, 0)]:
         return None
     year = dt.year
     # BST: last Sunday in March 01:00 UTC to last Sunday in October 01:00 UTC
