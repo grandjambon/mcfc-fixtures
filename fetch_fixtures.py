@@ -16,6 +16,7 @@ CATEGORY_MAP = {
 }
 
 STATIC_ENTRIES = [
+    {"slotType": "weekend", "date": "2026-08-16", "category": "community-shield", "label": "Arsenal (N \u2013 Principality Stadium, Cardiff)"},
     {"slotType": "break", "date": "2026-09-21", "dateEnd": "2026-10-06", "category": "international", "label": "International Break"},
     {"slotType": "break", "date": "2026-11-09", "dateEnd": "2026-11-17", "category": "international", "label": "International Break"},
     {"slotType": "break", "date": "2027-03-22", "dateEnd": "2027-03-30", "category": "international", "label": "International Break"},
@@ -110,8 +111,11 @@ def main():
     if estimates:
         print(f"  Adding {len(estimates)} estimated entries (categories not yet in API: {set(e['category'] for e in estimates)})")
 
+    # Static entries: always include internationals, only include community-shield if not from API
+    statics = [e for e in STATIC_ENTRIES if e["category"] == "international" or e["category"] not in api_categories]
+
     # Merge
-    merged = api_fixtures + STATIC_ENTRIES + estimates
+    merged = api_fixtures + statics + estimates
     merged.sort(key=lambda f: f["date"])
 
     os.makedirs(os.path.dirname(os.path.abspath("fixtures.json")), exist_ok=True)
