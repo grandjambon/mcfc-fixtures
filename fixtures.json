@@ -212,15 +212,13 @@
     "slotType": "weekend",
     "date": "2027-01-02",
     "category": "premier-league",
-    "label": "Tottenham (H)",
-    "kickoff": "12:00"
+    "label": "Tottenham (H)"
   },
   {
     "slotType": "midweek",
     "date": "2027-01-06",
     "category": "premier-league",
-    "label": "Leeds United (A)",
-    "kickoff": "12:00"
+    "label": "Leeds United (A)"
   },
   {
     "slotType": "weekend",
@@ -240,8 +238,7 @@
     "slotType": "weekend",
     "date": "2027-01-16",
     "category": "premier-league",
-    "label": "Nottingham (H)",
-    "kickoff": "12:00"
+    "label": "Nottingham (H)"
   },
   {
     "slotType": "midweek",
@@ -254,8 +251,7 @@
     "slotType": "weekend",
     "date": "2027-01-23",
     "category": "premier-league",
-    "label": "Brighton Hove (A)",
-    "kickoff": "12:00"
+    "label": "Brighton Hove (A)"
   },
   {
     "slotType": "midweek",
@@ -267,8 +263,7 @@
     "slotType": "weekend",
     "date": "2027-01-30",
     "category": "premier-league",
-    "label": "Arsenal (H)",
-    "kickoff": "12:00"
+    "label": "Arsenal (H)"
   },
   {
     "slotType": "midweek",
@@ -281,15 +276,13 @@
     "slotType": "weekend",
     "date": "2027-02-06",
     "category": "premier-league",
-    "label": "Fulham (A)",
-    "kickoff": "12:00"
+    "label": "Fulham (A)"
   },
   {
     "slotType": "midweek",
     "date": "2027-02-10",
     "category": "premier-league",
-    "label": "Tottenham (A)",
-    "kickoff": "12:00"
+    "label": "Tottenham (A)"
   },
   {
     "slotType": "weekend",
@@ -309,8 +302,7 @@
     "slotType": "weekend",
     "date": "2027-02-20",
     "category": "premier-league",
-    "label": "Newcastle (H)",
-    "kickoff": "12:00"
+    "label": "Newcastle (H)"
   },
   {
     "slotType": "midweek",
@@ -323,15 +315,13 @@
     "slotType": "weekend",
     "date": "2027-02-27",
     "category": "premier-league",
-    "label": "Hull City (A)",
-    "kickoff": "12:00"
+    "label": "Hull City (A)"
   },
   {
     "slotType": "midweek",
     "date": "2027-03-03",
     "category": "premier-league",
-    "label": "Everton (H)",
-    "kickoff": "12:00"
+    "label": "Everton (H)"
   },
   {
     "slotType": "weekend",
@@ -351,8 +341,7 @@
     "slotType": "weekend",
     "date": "2027-03-13",
     "category": "premier-league",
-    "label": "Coventry City (A)",
-    "kickoff": "12:00"
+    "label": "Coventry City (A)"
   },
   {
     "slotType": "midweek",
@@ -365,8 +354,7 @@
     "slotType": "weekend",
     "date": "2027-03-20",
     "category": "premier-league",
-    "label": "Man United (H)",
-    "kickoff": "12:00"
+    "label": "Man United (H)"
   },
   {
     "slotType": "weekend",
@@ -399,8 +387,7 @@
     "slotType": "weekend",
     "date": "2027-04-10",
     "category": "premier-league",
-    "label": "Bournemouth (A)",
-    "kickoff": "13:00"
+    "label": "Bournemouth (A)"
   },
   {
     "slotType": "midweek",
@@ -413,15 +400,13 @@
     "slotType": "weekend",
     "date": "2027-04-17",
     "category": "premier-league",
-    "label": "Crystal Palace (H)",
-    "kickoff": "13:00"
+    "label": "Crystal Palace (H)"
   },
   {
     "slotType": "weekend",
     "date": "2027-04-24",
     "category": "premier-league",
-    "label": "Chelsea (A)",
-    "kickoff": "13:00"
+    "label": "Chelsea (A)"
   },
   {
     "slotType": "weekend",
@@ -441,8 +426,7 @@
     "slotType": "weekend",
     "date": "2027-05-01",
     "category": "premier-league",
-    "label": "Brentford (H)",
-    "kickoff": "13:00"
+    "label": "Brentford (H)"
   },
   {
     "slotType": "midweek",
@@ -455,15 +439,13 @@
     "slotType": "weekend",
     "date": "2027-05-08",
     "category": "premier-league",
-    "label": "Liverpool (H)",
-    "kickoff": "13:00"
+    "label": "Liverpool (H)"
   },
   {
     "slotType": "weekend",
     "date": "2027-05-15",
     "category": "premier-league",
-    "label": "Ipswich Town (A)",
-    "kickoff": "13:00"
+    "label": "Ipswich Town (A)"
   },
   {
     "slotType": "weekend",
@@ -475,15 +457,13 @@
     "slotType": "weekend",
     "date": "2027-05-23",
     "category": "premier-league",
-    "label": "Aston Villa (H)",
-    "kickoff": "13:00"
+    "label": "Aston Villa (H)"
   },
   {
     "slotType": "weekend",
     "date": "2027-05-30",
     "category": "premier-league",
-    "label": "Sunderland (A)",
-    "kickoff": "13:00"
+    "label": "Sunderland (A)"
   },
   {
     "slotType": "weekend",
