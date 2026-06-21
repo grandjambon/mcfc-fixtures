@@ -16,7 +16,7 @@ CATEGORY_MAP = {
 }
 
 STATIC_ENTRIES = [
-    {"slotType": "weekend", "date": "2026-08-16", "category": "community-shield", "label": "Arsenal (N \u2013 Principality Stadium, Cardiff)"},
+    {"slotType": "weekend", "date": "2026-08-16", "category": "community-shield", "label": "Arsenal (N \u2013 Principality Stadium, Cardiff)", "kickoff": "15:00"},
     {"slotType": "break", "date": "2026-09-21", "dateEnd": "2026-10-06", "category": "international", "label": "International Break"},
     {"slotType": "break", "date": "2026-11-09", "dateEnd": "2026-11-17", "category": "international", "label": "International Break"},
     {"slotType": "break", "date": "2027-03-22", "dateEnd": "2027-03-30", "category": "international", "label": "International Break"},
