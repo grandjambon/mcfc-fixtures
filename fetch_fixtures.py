@@ -71,21 +71,18 @@ def is_weekend(date_str):
 def utc_to_uk(utc_date_str):
     """Convert UTC datetime string to UK time (BST/GMT) and return HH:MM or None if midnight."""
     from datetime import datetime, timedelta
-    dt = datetime.fromisoformat(utc_date_str.replace("Z", "+00:00"))
-    # BST: last Sunday in March to last Sunday in October
+    dt = datetime.fromisoformat(utc_date_str.replace("Z", "+00:00")).replace(tzinfo=None)
+    if dt.hour == 0 and dt.minute == 0:
+        return None
     year = dt.year
-    # Find last Sunday in March
+    # BST: last Sunday in March 01:00 UTC to last Sunday in October 01:00 UTC
     mar31 = datetime(year, 3, 31, 1, 0)
     bst_start = mar31 - timedelta(days=(mar31.weekday() + 1) % 7)
-    bst_start = bst_start.replace(tzinfo=dt.tzinfo)
-    # Find last Sunday in October
     oct31 = datetime(year, 10, 31, 1, 0)
     bst_end = oct31 - timedelta(days=(oct31.weekday() + 1) % 7)
-    bst_end = bst_end.replace(tzinfo=dt.tzinfo)
-    if bst_start <= dt.replace(tzinfo=None) < bst_end:
+    if bst_start <= dt < bst_end:
         dt += timedelta(hours=1)
-    time_str = dt.strftime("%H:%M")
-    return time_str if time_str != "00:00" else None
+    return dt.strftime("%H:%M")
 
 
 def build_fixture(match):
