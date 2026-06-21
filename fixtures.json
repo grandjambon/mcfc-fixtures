@@ -1,6 +1,12 @@
 [
   {
     "slotType": "weekend",
+    "date": "2026-08-16",
+    "category": "community-shield",
+    "label": "Arsenal (N \u2013 Principality Stadium, Cardiff)"
+  },
+  {
+    "slotType": "weekend",
     "date": "2026-08-23",
     "category": "premier-league",
     "label": "Bournemouth (H)"
