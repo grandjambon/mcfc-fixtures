@@ -66,7 +66,7 @@ Countries included: england, scotland, wales, northern-ireland, republic-of-irel
 | premier-league | Blue (#6cabdd) | API (live, 38 matches confirmed) |
 | champions-league | Purple (#a366ff) | API when drawn; estimated dates as fallback |
 | fa-cup | Green (#66ff8c) | API when drawn; estimated round dates as fallback |
-| league-cup | Orange (#ffc966) | API when drawn; estimated dates based on 2025-26 pattern |
+| league-cup | Orange (#ffc966) | API when drawn; confirmed EFL round dates as fallback |
 | community-shield | Pink (#ff66a3) | Static entry (confirmed: Arsenal, Aug 16, Cardiff, 15:00 BST) |
 | international | Grey (#888) | Static entries with expandable panels |
 

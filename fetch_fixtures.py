@@ -23,10 +23,11 @@ STATIC_ENTRIES = [
 ]
 
 # Estimated cup dates (used until real fixtures appear from API)
+# Round 3 is split across w/c Sep 7 and Sep 14; CL clubs (inc. City) play the second week.
 ESTIMATED_CUP_ENTRIES = [
-    {"slotType": "midweek", "date": "2026-09-15", "dateEnd": "2026-09-16", "category": "league-cup", "label": "Carabao Cup Round 3"},
+    {"slotType": "midweek", "date": "2026-09-15", "dateEnd": "2026-09-16", "category": "league-cup", "label": "Carabao Cup Round 3 (w/c 14 Sep — CL clubs' week)"},
     {"slotType": "midweek", "date": "2026-10-27", "dateEnd": "2026-10-28", "category": "league-cup", "label": "Carabao Cup Round 4"},
-    {"slotType": "midweek", "date": "2026-12-15", "dateEnd": "2026-12-16", "category": "league-cup", "label": "Carabao Cup Quarter-Final"},
+    {"slotType": "midweek", "date": "2026-12-15", "dateEnd": "2026-12-16", "category": "league-cup", "label": "Carabao Cup Round 5"},
     {"slotType": "midweek", "date": "2027-01-12", "dateEnd": "2027-01-13", "category": "league-cup", "label": "Carabao Cup Semi-Final 1st Leg"},
     {"slotType": "midweek", "date": "2027-02-02", "dateEnd": "2027-02-03", "category": "league-cup", "label": "Carabao Cup Semi-Final 2nd Leg"},
     {"slotType": "weekend", "date": "2027-03-21", "category": "league-cup", "label": "Carabao Cup Final (Wembley)"},
