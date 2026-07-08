@@ -34,8 +34,8 @@ Array of fixture objects, sorted by date:
 ```
 
 **slotType rules:**
-- `weekend` = Saturday or Sunday
-- `midweek` = Monday through Friday
+- `weekend` = Friday, Saturday, Sunday or Monday
+- `midweek` = Tuesday, Wednesday or Thursday
 - `break` = international breaks only
 
 **dateEnd:** Present only for multi-day events. When present, the date column is left blank and the date range is shown in the label text instead.
