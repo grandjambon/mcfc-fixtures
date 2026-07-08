@@ -66,7 +66,7 @@ def fetch_api(url):
 def is_weekend(date_str):
     from datetime import date
     d = date.fromisoformat(date_str)
-    return d.weekday() >= 5  # Sat=5, Sun=6
+    return d.weekday() in (0, 4, 5, 6)  # Mon=0, Fri=4, Sat=5, Sun=6
 
 
 def utc_to_uk(utc_date_str):
