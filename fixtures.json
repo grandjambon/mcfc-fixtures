@@ -15,10 +15,10 @@
   },
   {
     "slotType": "weekend",
-    "date": "2026-08-29",
+    "date": "2026-08-28",
     "category": "premier-league",
     "label": "Crystal Palace (A)",
-    "kickoff": "15:00"
+    "kickoff": "20:00"
   },
   {
     "slotType": "weekend",
@@ -36,10 +36,10 @@
   },
   {
     "slotType": "weekend",
-    "date": "2026-09-12",
+    "date": "2026-09-13",
     "category": "premier-league",
     "label": "Man United (A)",
-    "kickoff": "15:00"
+    "kickoff": "16:30"
   },
   {
     "slotType": "midweek",
