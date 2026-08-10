@@ -66,8 +66,7 @@
     "slotType": "weekend",
     "date": "2026-10-10",
     "category": "premier-league",
-    "label": "Liverpool (A)",
-    "kickoff": "15:00"
+    "label": "Liverpool (A)"
   },
   {
     "slotType": "midweek",
@@ -80,8 +79,7 @@
     "slotType": "weekend",
     "date": "2026-10-17",
     "category": "premier-league",
-    "label": "Ipswich Town (H)",
-    "kickoff": "15:00"
+    "label": "Ipswich Town (H)"
   },
   {
     "slotType": "midweek",
@@ -94,8 +92,7 @@
     "slotType": "weekend",
     "date": "2026-10-24",
     "category": "premier-league",
-    "label": "Aston Villa (A)",
-    "kickoff": "15:00"
+    "label": "Aston Villa (A)"
   },
   {
     "slotType": "midweek",
@@ -108,8 +105,7 @@
     "slotType": "weekend",
     "date": "2026-10-31",
     "category": "premier-league",
-    "label": "Brighton Hove (H)",
-    "kickoff": "15:00"
+    "label": "Brighton Hove (H)"
   },
   {
     "slotType": "midweek",
@@ -122,8 +118,7 @@
     "slotType": "weekend",
     "date": "2026-11-07",
     "category": "premier-league",
-    "label": "Nottingham (A)",
-    "kickoff": "15:00"
+    "label": "Nottingham (A)"
   },
   {
     "slotType": "break",
@@ -136,8 +131,7 @@
     "slotType": "weekend",
     "date": "2026-11-21",
     "category": "premier-league",
-    "label": "Fulham (H)",
-    "kickoff": "15:00"
+    "label": "Fulham (H)"
   },
   {
     "slotType": "midweek",
@@ -150,22 +144,19 @@
     "slotType": "weekend",
     "date": "2026-11-28",
     "category": "premier-league",
-    "label": "Arsenal (A)",
-    "kickoff": "15:00"
+    "label": "Arsenal (A)"
   },
   {
     "slotType": "midweek",
     "date": "2026-12-02",
     "category": "premier-league",
-    "label": "Leeds United (H)",
-    "kickoff": "20:00"
+    "label": "Leeds United (H)"
   },
   {
     "slotType": "weekend",
     "date": "2026-12-05",
     "category": "premier-league",
-    "label": "Brentford (A)",
-    "kickoff": "15:00"
+    "label": "Brentford (A)"
   },
   {
     "slotType": "midweek",
@@ -178,8 +169,7 @@
     "slotType": "weekend",
     "date": "2026-12-12",
     "category": "premier-league",
-    "label": "Chelsea (H)",
-    "kickoff": "15:00"
+    "label": "Chelsea (H)"
   },
   {
     "slotType": "midweek",
@@ -192,22 +182,19 @@
     "slotType": "weekend",
     "date": "2026-12-19",
     "category": "premier-league",
-    "label": "Hull City (H)",
-    "kickoff": "15:00"
+    "label": "Hull City (H)"
   },
   {
     "slotType": "weekend",
     "date": "2026-12-26",
     "category": "premier-league",
-    "label": "Newcastle (A)",
-    "kickoff": "15:00"
+    "label": "Newcastle (A)"
   },
   {
     "slotType": "midweek",
     "date": "2026-12-30",
     "category": "premier-league",
-    "label": "Everton (A)",
-    "kickoff": "20:00"
+    "label": "Everton (A)"
   },
   {
     "slotType": "weekend",
