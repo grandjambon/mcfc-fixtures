@@ -64,9 +64,10 @@
   },
   {
     "slotType": "weekend",
-    "date": "2026-10-10",
+    "date": "2026-10-11",
     "category": "premier-league",
-    "label": "Liverpool (A)"
+    "label": "Liverpool (A)",
+    "kickoff": "16:30"
   },
   {
     "slotType": "midweek",
@@ -79,7 +80,8 @@
     "slotType": "weekend",
     "date": "2026-10-17",
     "category": "premier-league",
-    "label": "Ipswich Town (H)"
+    "label": "Ipswich Town (H)",
+    "kickoff": "15:00"
   },
   {
     "slotType": "midweek",
@@ -92,7 +94,8 @@
     "slotType": "weekend",
     "date": "2026-10-24",
     "category": "premier-league",
-    "label": "Aston Villa (A)"
+    "label": "Aston Villa (A)",
+    "kickoff": "12:30"
   },
   {
     "slotType": "midweek",
@@ -105,7 +108,8 @@
     "slotType": "weekend",
     "date": "2026-10-31",
     "category": "premier-league",
-    "label": "Brighton Hove (H)"
+    "label": "Brighton Hove (H)",
+    "kickoff": "15:00"
   },
   {
     "slotType": "midweek",
