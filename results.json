@@ -1,1 +1,30 @@
-{}
+{
+  "2026-08-23_Man City_v_Bournemouth": {
+    "date": "2026-08-23",
+    "matchId": 560548,
+    "homeTeam": "Man City",
+    "awayTeam": "Bournemouth",
+    "isHome": true,
+    "score": {
+      "fullTime": {
+        "home": 2,
+        "away": 1
+      },
+      "halfTime": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
+  }
+}

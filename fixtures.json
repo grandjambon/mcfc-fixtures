@@ -8,6 +8,13 @@
   },
   {
     "slotType": "weekend",
+    "date": "2026-08-23",
+    "category": "premier-league",
+    "label": "Bournemouth (H)",
+    "kickoff": "14:00"
+  },
+  {
+    "slotType": "weekend",
     "date": "2026-08-28",
     "category": "premier-league",
     "label": "Crystal Palace (A)",
