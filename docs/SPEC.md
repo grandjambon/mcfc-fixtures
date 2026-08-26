@@ -9,12 +9,13 @@ A static single-page website displaying all Manchester City 2026-27 fixtures acr
 ```
 index.html              → Single-page app (vanilla HTML/CSS/JS)
 fixtures.json           → Generated fixture data (written by fetch script + GitHub Action)
+results.json            → Generated match results (score, goals, lineups, subs)
 internationals.json     → Static international break fixture panels
 fetch_fixtures.py       → Python script to pull data from football-data.org API
-.github/workflows/update-fixtures.yml → Daily cron job to regenerate fixtures.json
+.github/workflows/update-fixtures.yml → Daily cron job to regenerate fixtures.json + results.json
 ```
 
-No build step, no dependencies, no framework. The site fetches the two JSON files at load time and renders client-side.
+No build step, no dependencies, no framework. The site fetches the three JSON files at load time and renders client-side.
 
 ## Data Model
 
@@ -41,6 +42,36 @@ Array of fixture objects, sorted by date:
 **dateEnd:** Present only for multi-day events. When present, the date column is left blank and the date range is shown in the label text instead.
 
 **kickoff:** UK local time in 24-hour format. Omitted when the API returns placeholder times (00:00 or 12:00 UTC, which indicate "not yet confirmed").
+
+### results.json
+
+Object keyed by `"{date}_{homeTeam}_v_{awayTeam}"`, each entry containing:
+
+```json
+{
+  "date": "YYYY-MM-DD",
+  "matchId": 123456,
+  "homeTeam": "Man City",
+  "awayTeam": "Bournemouth",
+  "isHome": true,
+  "score": {
+    "fullTime": {"home": 3, "away": 1},
+    "halfTime": {"home": 1, "away": 0}
+  },
+  "goals": [
+    {"minute": 12, "scorer": "Haaland", "team": "home", "type": "REGULAR"},
+    {"minute": 45, "injuryTime": 2, "scorer": "Foden", "team": "home", "type": "REGULAR"},
+    {"minute": 67, "scorer": "Haaland", "team": "home", "type": "PENALTY"},
+    {"minute": 78, "scorer": "Kluivert", "team": "away", "type": "REGULAR"}
+  ],
+  "homeLineup": {
+    "formation": "4-3-3",
+    "startingXI": [{"name": "Ederson", "shirtNumber": 31, "position": "Goalkeeper"}, ...],
+    "substitutions": [{"minute": 70, "playerIn": "McAtee", "playerOut": "Foden"}]
+  },
+  "awayLineup": { ... }
+}
+```
 
 ### internationals.json
 
@@ -87,6 +118,10 @@ Countries included: england, scotland, wales, northern-ireland, republic-of-irel
 5. For categories NOT in API data, include estimated/static fallback entries
 6. Always include international breaks and Community Shield (unless API provides them)
 7. Sort by date, write to fixtures.json
+8. Pull all finished Man City matches from API (with 6s delay for rate limit)
+9. Extract score, goals, lineups, substitutions into result objects
+10. Merge with existing results.json (preserves history, overwrites duplicates)
+11. Write results.json
 
 **Key behaviour:** As draws happen (CL in Aug, cup rounds throughout season), real fixtures automatically replace the estimated placeholders because the API will return data for that category.
 
@@ -95,9 +130,20 @@ Countries included: england, scotland, wales, northern-ireland, republic-of-irel
 - **Schedule:** Daily at 08:00 UTC
 - **Trigger:** Also manual via workflow_dispatch
 - **Secret:** `FOOTBALL_DATA_API_KEY` stored in repo secrets
-- **Behaviour:** Only commits if fixtures.json content has changed
+- **Behaviour:** Only commits if fixtures.json or results.json content has changed
 
 ## Display Rules
+
+### Completed Fixtures (Results)
+- Fixtures with a result show the score inline (e.g. `3-1`) next to the label
+- Clicking expands a panel below showing:
+  - Full score line with team names: `Man City 3 - 1 Bournemouth`
+  - Half-time score: `HT: 1-0`
+  - Goalscorers grouped by team with minute and type (pen/og)
+  - City's lineup: formation + starting XI (name + shirt number)
+  - City's substitutions: minute, player in (▲), player out (▼)
+  - Opponent's lineup and substitutions below a divider
+- Panel uses same expand/collapse pattern as international break panels
 
 ### Desktop
 - Full layout: slot-type | date | label + kickoff | category tag
@@ -138,7 +184,6 @@ Countries included: england, scotland, wales, northern-ireland, republic-of-irel
 
 ## Future Considerations
 
-- Add scores/results for completed matches
 - Mark unconfirmed kick-off times differently from confirmed ones
 - Add calendar export (ICS)
 - Handle fixture postponements gracefully

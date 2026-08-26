@@ -21,11 +21,15 @@
             border-radius: 5px; border-left: 4px solid;
             font-size: 0.9rem;
         }
+        .fixture.has-result { cursor: pointer; }
+        .fixture.has-result:hover { filter: brightness(1.15); }
         .fixture .slot-type { font-size: 0.7rem; text-transform: uppercase; opacity: 0.6; min-width: 65px; }
         .fixture .date { min-width: 110px; font-size: 0.8rem; opacity: 0.7; }
         .fixture .label { flex: 1; }
         .fixture .kickoff { font-size: 0.75rem; opacity: 0.6; margin-left: 0.5rem; }
+        .fixture .score-inline { font-size: 0.75rem; font-weight: 600; margin-left: 0.5rem; opacity: 0.9; }
         .fixture .category-tag { font-size: 0.65rem; text-transform: uppercase; padding: 0.15rem 0.4rem; border-radius: 3px; opacity: 0.8; }
+        .fixture .result-toggle { font-size: 0.7rem; opacity: 0.5; margin-left: 0.5rem; }
         .premier-league { background: #1c2840; border-color: #6cabdd; }
         .premier-league .category-tag { background: #6cabdd33; color: #6cabdd; }
         .champions-league { background: #261840; border-color: #a366ff; }
@@ -38,6 +42,30 @@
         .international .category-tag { background: #88888833; color: #888; }
         .community-shield { background: #3a1a2a; border-color: #ff66a3; }
         .community-shield .category-tag { background: #ff66a333; color: #ff66a3; }
+
+        /* Result panel styles */
+        .result-panel { display: none; margin: 0 0 0.4rem 0; padding: 0.8rem; background: #222; border-radius: 0 0 5px 5px; border-left: 4px solid #555; margin-top: -0.4rem; }
+        .result-panel.open { display: block; }
+        .result-panel .result-score { font-size: 1.1rem; font-weight: 700; text-align: center; margin-bottom: 0.5rem; }
+        .result-panel .result-score .team-name { color: #ccc; }
+        .result-panel .result-score .score-num { color: #fff; margin: 0 0.5rem; }
+        .result-panel .result-ht { text-align: center; font-size: 0.75rem; color: #888; margin-bottom: 0.6rem; }
+        .result-panel .result-goals { margin-bottom: 0.6rem; }
+        .result-panel .result-goals h4 { font-size: 0.7rem; text-transform: uppercase; color: #aaa; margin-bottom: 0.25rem; letter-spacing: 0.5px; }
+        .result-panel .goal-entry { font-size: 0.8rem; color: #ccc; padding: 0.15rem 0; }
+        .result-panel .goal-entry .goal-minute { opacity: 0.6; min-width: 40px; display: inline-block; }
+        .result-panel .goal-entry .goal-type { font-size: 0.7rem; opacity: 0.5; }
+        .result-panel .result-lineup { margin-bottom: 0.5rem; }
+        .result-panel .result-lineup h4 { font-size: 0.7rem; text-transform: uppercase; color: #aaa; margin-bottom: 0.25rem; letter-spacing: 0.5px; }
+        .result-panel .lineup-formation { font-size: 0.75rem; color: #888; margin-bottom: 0.2rem; }
+        .result-panel .lineup-players { font-size: 0.8rem; color: #ccc; line-height: 1.5; }
+        .result-panel .result-subs { margin-top: 0.4rem; }
+        .result-panel .result-subs h4 { font-size: 0.7rem; text-transform: uppercase; color: #aaa; margin-bottom: 0.25rem; letter-spacing: 0.5px; }
+        .result-panel .sub-entry { font-size: 0.78rem; color: #999; padding: 0.1rem 0; }
+        .result-panel .sub-entry .sub-in { color: #6f6; }
+        .result-panel .sub-entry .sub-out { color: #f66; }
+        .result-panel .sub-entry .sub-minute { opacity: 0.6; }
+        .result-panel .result-divider { border: none; border-top: 1px solid #333; margin: 0.5rem 0; }
 
         @media (max-width: 600px) {
             body { padding: 0.75rem; }
@@ -52,6 +80,8 @@
             .legend { gap: 0.8rem; }
             .intl-panel { padding: 0.4rem 0.6rem; }
             .intl-match { flex-wrap: wrap; gap: 0.1rem 0.4rem; }
+            .result-panel { padding: 0.5rem 0.6rem; }
+            .result-panel .result-score { font-size: 1rem; }
         }
 
         .intl-panel { display: none; margin: 0 0 0.4rem 0; padding: 0.6rem 0.8rem; background: #222; border-radius: 0 0 5px 5px; border-left: 4px solid #888; margin-top: -0.4rem; }
@@ -155,10 +185,121 @@
             return html;
         }
 
+        function findResult(results, fixture) {
+            // Match result by date — search all keys that start with this date
+            const datePrefix = fixture.date + '_';
+            for (const key of Object.keys(results)) {
+                if (key.startsWith(datePrefix)) {
+                    return results[key];
+                }
+            }
+            return null;
+        }
+
+        function renderGoalText(goal) {
+            let text = `<span class="goal-minute">${goal.minute}'`;
+            if (goal.injuryTime) text += `+${goal.injuryTime}`;
+            text += `</span> ${goal.scorer}`;
+            if (goal.type === 'PENALTY') text += ` <span class="goal-type">(pen)</span>`;
+            if (goal.type === 'OWN_GOAL') text += ` <span class="goal-type">(og)</span>`;
+            return text;
+        }
+
+        function renderResultPanel(result, panelId) {
+            const ht = result.score.halfTime;
+            const ft = result.score.fullTime;
+
+            let html = `<div class="result-panel" id="${panelId}">`;
+
+            // Score line
+            html += `<div class="result-score">
+                <span class="team-name">${result.homeTeam}</span>
+                <span class="score-num">${ft.home} - ${ft.away}</span>
+                <span class="team-name">${result.awayTeam}</span>
+            </div>`;
+            html += `<div class="result-ht">HT: ${ht.home} - ${ht.away}</div>`;
+
+            // Goals
+            const homeGoals = result.goals.filter(g => g.team === 'home');
+            const awayGoals = result.goals.filter(g => g.team === 'away');
+
+            if (result.goals.length > 0) {
+                html += `<div class="result-goals">`;
+                if (homeGoals.length > 0) {
+                    html += `<h4>${result.homeTeam}</h4>`;
+                    homeGoals.forEach(g => {
+                        html += `<div class="goal-entry">${renderGoalText(g)}</div>`;
+                    });
+                }
+                if (awayGoals.length > 0) {
+                    html += `<h4>${result.awayTeam}</h4>`;
+                    awayGoals.forEach(g => {
+                        html += `<div class="goal-entry">${renderGoalText(g)}</div>`;
+                    });
+                }
+                html += `</div>`;
+            }
+
+            html += `<hr class="result-divider">`;
+
+            // Lineups — show City's lineup prominently, opponent's below
+            const citySide = result.isHome ? 'home' : 'away';
+            const oppSide = result.isHome ? 'away' : 'home';
+            const cityLineup = result[`${citySide}Lineup`];
+            const oppLineup = result[`${oppSide}Lineup`];
+            const cityName = result.isHome ? result.homeTeam : result.awayTeam;
+            const oppName = result.isHome ? result.awayTeam : result.homeTeam;
+
+            // City lineup
+            if (cityLineup && cityLineup.startingXI && cityLineup.startingXI.length > 0) {
+                html += `<div class="result-lineup">`;
+                html += `<h4>${cityName}${cityLineup.formation ? ' (' + cityLineup.formation + ')' : ''}</h4>`;
+                const players = cityLineup.startingXI.map(p => {
+                    return p.shirtNumber ? `${p.name} (${p.shirtNumber})` : p.name;
+                });
+                html += `<div class="lineup-players">${players.join(', ')}</div>`;
+
+                // City subs
+                if (cityLineup.substitutions && cityLineup.substitutions.length > 0) {
+                    html += `<div class="result-subs"><h4>Subs</h4>`;
+                    cityLineup.substitutions.forEach(s => {
+                        html += `<div class="sub-entry"><span class="sub-minute">${s.minute}'</span> <span class="sub-in">▲ ${s.playerIn}</span> <span class="sub-out">▼ ${s.playerOut}</span></div>`;
+                    });
+                    html += `</div>`;
+                }
+                html += `</div>`;
+            }
+
+            // Opponent lineup
+            if (oppLineup && oppLineup.startingXI && oppLineup.startingXI.length > 0) {
+                html += `<hr class="result-divider">`;
+                html += `<div class="result-lineup">`;
+                html += `<h4>${oppName}${oppLineup.formation ? ' (' + oppLineup.formation + ')' : ''}</h4>`;
+                const players = oppLineup.startingXI.map(p => {
+                    return p.shirtNumber ? `${p.name} (${p.shirtNumber})` : p.name;
+                });
+                html += `<div class="lineup-players">${players.join(', ')}</div>`;
+
+                // Opponent subs
+                if (oppLineup.substitutions && oppLineup.substitutions.length > 0) {
+                    html += `<div class="result-subs"><h4>Subs</h4>`;
+                    oppLineup.substitutions.forEach(s => {
+                        html += `<div class="sub-entry"><span class="sub-minute">${s.minute}'</span> <span class="sub-in">▲ ${s.playerIn}</span> <span class="sub-out">▼ ${s.playerOut}</span></div>`;
+                    });
+                    html += `</div>`;
+                }
+                html += `</div>`;
+            }
+
+            html += `</div>`;
+            return html;
+        }
+
         Promise.all([
             fetch('fixtures.json').then(r => r.json()),
-            fetch('internationals.json').then(r => r.json())
-        ]).then(([fixtures, internationals]) => {
+            fetch('internationals.json').then(r => r.json()),
+            fetch('results.json').then(r => r.json()).catch(() => ({}))
+        ]).then(([fixtures, internationals, results]) => {
             fixtures.sort((a, b) => new Date(a.date) - new Date(b.date));
             const container = document.getElementById('fixtures');
             let currentMonth = '';
@@ -189,16 +330,30 @@
                 const kickoff = f.kickoff ? `<span class="kickoff">${f.kickoff}</span>` : '';
                 const tag = categoryLabels[f.category] || '';
 
+                // Check if this fixture has a result
+                const result = (f.category !== 'international') ? findResult(results, f) : null;
+
                 if (f.category === 'international') {
                     const pid = `intl-panel-${panelIndex++}`;
                     html += `<div class="fixture ${f.category}" onclick="document.getElementById('${pid}').classList.toggle('open')">
                         <span class="slot-type">${f.slotType}</span>
                         <span class="date">${dateCol}</span>
-                        <span class="label">${labelText}${kickoff}<span class="intl-toggle">▼ click to expand</span></span>
+                        <span class="label">${labelText}${kickoff}<span class="intl-toggle">▼</span></span>
                         <span class="category-tag">${tag}</span>
                     </div>`;
                     const end = new Date(f.dateEnd);
                     html += `<div class="intl-panel" id="${pid}">${renderIntlPanel(internationals, d, end)}</div>`;
+                } else if (result) {
+                    const pid = `result-panel-${panelIndex++}`;
+                    const ft = result.score.fullTime;
+                    const scoreText = `${ft.home}-${ft.away}`;
+                    html += `<div class="fixture ${f.category} has-result" onclick="document.getElementById('${pid}').classList.toggle('open')">
+                        <span class="slot-type">${f.slotType}</span>
+                        <span class="date">${dateCol}</span>
+                        <span class="label">${labelText}<span class="score-inline">${scoreText}</span><span class="result-toggle">▼</span></span>
+                        <span class="category-tag">${tag}</span>
+                    </div>`;
+                    html += renderResultPanel(result, pid);
                 } else {
                     html += `<div class="fixture ${f.category}">
                         <span class="slot-type">${f.slotType}</span>

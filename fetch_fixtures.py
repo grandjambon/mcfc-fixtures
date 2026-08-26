@@ -1,8 +1,9 @@
-"""Fetch Man City fixtures from football-data.org and output fixtures.json"""
+"""Fetch Man City fixtures from football-data.org and output fixtures.json + results.json"""
 import urllib.request
 import json
 import os
 import sys
+import time
 
 API_KEY = os.environ.get("FOOTBALL_DATA_API_KEY")
 TEAM_ID = 65  # Manchester City
@@ -25,7 +26,7 @@ STATIC_ENTRIES = [
 # Estimated cup dates (used until real fixtures appear from API)
 # Round 3 is split across w/c Sep 7 and Sep 14; CL clubs (inc. City) play the second week.
 ESTIMATED_CUP_ENTRIES = [
-    {"slotType": "midweek", "date": "2026-09-15", "dateEnd": "2026-09-16", "category": "league-cup", "label": "Carabao Cup Round 3 (w/c 14 Sep — CL clubs' week)"},
+    {"slotType": "midweek", "date": "2026-09-15", "dateEnd": "2026-09-16", "category": "league-cup", "label": "Carabao Cup Round 3 (w/c 14 Sep \u2014 CL clubs' week)"},
     {"slotType": "midweek", "date": "2026-10-27", "dateEnd": "2026-10-28", "category": "league-cup", "label": "Carabao Cup Round 4"},
     {"slotType": "midweek", "date": "2026-12-15", "dateEnd": "2026-12-16", "category": "league-cup", "label": "Carabao Cup Quarter-Final"},
     {"slotType": "midweek", "date": "2027-01-12", "dateEnd": "2027-01-13", "category": "league-cup", "label": "Carabao Cup Semi-Final 1st Leg"},
@@ -97,7 +98,7 @@ def build_fixture(match):
     if category == "premier-league":
         label = f"{opponent} ({'H' if is_home else 'A'})"
     elif category == "community-shield":
-        label = f"{opponent} (N – Principality Stadium, Cardiff)"
+        label = f"{opponent} (N \u2013 Principality Stadium, Cardiff)"
     else:
         stage = (match.get("stage") or "").replace("_", " ").title()
         md = match.get("matchday")
@@ -117,18 +118,87 @@ def build_fixture(match):
     return fixture
 
 
+def build_result(match):
+    """Extract result data from a finished match."""
+    date = match["utcDate"][:10]
+    is_home = match["homeTeam"]["id"] == TEAM_ID
+    home_team = match["homeTeam"]
+    away_team = match["awayTeam"]
+
+    result = {
+        "date": date,
+        "matchId": match["id"],
+        "homeTeam": home_team.get("shortName") or home_team["name"],
+        "awayTeam": away_team.get("shortName") or away_team["name"],
+        "isHome": is_home,
+        "score": {
+            "fullTime": match["score"]["fullTime"],
+            "halfTime": match["score"]["halfTime"],
+        },
+    }
+
+    # Goals
+    goals = []
+    for g in match.get("goals") or []:
+        goal = {
+            "minute": g["minute"],
+            "scorer": g["scorer"]["name"] if g.get("scorer") else "Unknown",
+            "team": "home" if g["team"]["id"] == home_team["id"] else "away",
+            "type": g.get("type", "REGULAR"),
+        }
+        if g.get("injuryTime"):
+            goal["injuryTime"] = g["injuryTime"]
+        goals.append(goal)
+    result["goals"] = goals
+
+    # Lineups (starting XI with formation)
+    for side, team_data in [("home", home_team), ("away", away_team)]:
+        lineup_data = {
+            "formation": team_data.get("formation"),
+            "startingXI": [],
+            "substitutions": [],
+        }
+        for player in team_data.get("lineup") or []:
+            lineup_data["startingXI"].append({
+                "name": player["name"],
+                "shirtNumber": player.get("shirtNumber"),
+                "position": player.get("position"),
+            })
+        result[f"{side}Lineup"] = lineup_data
+
+    # Substitutions
+    for sub in match.get("substitutions") or []:
+        side = "home" if sub["team"]["id"] == home_team["id"] else "away"
+        result[f"{side}Lineup"]["substitutions"].append({
+            "minute": sub["minute"],
+            "playerIn": sub["playerIn"]["name"],
+            "playerOut": sub["playerOut"]["name"],
+        })
+
+    return result
+
+
 def main():
     if not API_KEY:
         print("Error: FOOTBALL_DATA_API_KEY environment variable not set")
         sys.exit(1)
 
-    print("Fetching Man City fixtures...")
+    # --- Fetch scheduled fixtures ---
+    print("Fetching Man City scheduled fixtures...")
     data = fetch_api(f"https://api.football-data.org/v4/teams/{TEAM_ID}/matches?status=SCHEDULED,TIMED")
-    matches = data.get("matches", [])
-    print(f"  API returned {len(matches)} scheduled matches")
+    scheduled_matches = data.get("matches", [])
+    print(f"  API returned {len(scheduled_matches)} scheduled matches")
 
-    # Build fixtures from API
-    api_fixtures = [build_fixture(m) for m in matches]
+    # --- Fetch finished fixtures (so they remain in the fixture list) ---
+    print("Fetching Man City finished matches...")
+    time.sleep(6)  # Respect rate limit
+    data = fetch_api(f"https://api.football-data.org/v4/teams/{TEAM_ID}/matches?status=FINISHED&limit=100")
+    finished_matches = data.get("matches", [])
+    print(f"  API returned {len(finished_matches)} finished matches")
+
+    # Build fixtures from both scheduled and finished
+    all_api_matches = scheduled_matches + finished_matches
+    api_fixtures = [build_fixture(m) for m in all_api_matches]
     api_categories = {f["category"] for f in api_fixtures}
 
     # Only include estimated cup entries for categories NOT yet in API data
@@ -143,12 +213,32 @@ def main():
     merged = api_fixtures + statics + estimates
     merged.sort(key=lambda f: f["date"])
 
-    os.makedirs(os.path.dirname(os.path.abspath("fixtures.json")), exist_ok=True)
     with open("fixtures.json", "w") as f:
         json.dump(merged, f, indent=2)
         f.write("\n")
-
     print(f"  Written {len(merged)} entries to fixtures.json")
+
+    # --- Build detailed results from finished matches ---
+    print("Building results data...")
+    results = {}
+    for match in finished_matches:
+        result = build_result(match)
+        key = f"{result['date']}_{result['homeTeam']}_v_{result['awayTeam']}"
+        results[key] = result
+
+    # Also load any existing results to preserve history across seasons
+    existing_results = {}
+    if os.path.exists("results.json"):
+        with open("results.json") as f:
+            existing_results = json.load(f)
+
+    # Merge: new data overwrites existing for same key
+    existing_results.update(results)
+
+    with open("results.json", "w") as f:
+        json.dump(existing_results, f, indent=2)
+        f.write("\n")
+    print(f"  Written {len(existing_results)} results to results.json")
 
 
 if __name__ == "__main__":
