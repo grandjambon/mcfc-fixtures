@@ -15,13 +15,6 @@
   },
   {
     "slotType": "weekend",
-    "date": "2026-08-28",
-    "category": "premier-league",
-    "label": "Crystal Palace (A)",
-    "kickoff": "20:00"
-  },
-  {
-    "slotType": "weekend",
     "date": "2026-09-05",
     "category": "premier-league",
     "label": "Coventry City (H)",
