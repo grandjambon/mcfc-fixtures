@@ -15,6 +15,13 @@
   },
   {
     "slotType": "weekend",
+    "date": "2026-08-28",
+    "category": "premier-league",
+    "label": "Crystal Palace (A)",
+    "kickoff": "20:00"
+  },
+  {
+    "slotType": "weekend",
     "date": "2026-09-05",
     "category": "premier-league",
     "label": "Coventry City (H)",
@@ -23,9 +30,9 @@
   {
     "slotType": "midweek",
     "date": "2026-09-08",
-    "dateEnd": "2026-09-10",
     "category": "champions-league",
-    "label": "Champions League Matchday 1"
+    "label": "UEFA Champions League Matchday 1",
+    "kickoff": "20:00"
   },
   {
     "slotType": "weekend",
@@ -43,10 +50,10 @@
   },
   {
     "slotType": "weekend",
-    "date": "2026-09-19",
+    "date": "2026-09-20",
     "category": "premier-league",
     "label": "Sunderland (H)",
-    "kickoff": "15:00"
+    "kickoff": "14:00"
   },
   {
     "slotType": "break",
@@ -64,10 +71,10 @@
   },
   {
     "slotType": "midweek",
-    "date": "2026-10-13",
-    "dateEnd": "2026-10-14",
+    "date": "2026-10-14",
     "category": "champions-league",
-    "label": "Champions League Matchday 2"
+    "label": "UEFA Champions League Matchday 2",
+    "kickoff": "20:00"
   },
   {
     "slotType": "weekend",
@@ -79,9 +86,9 @@
   {
     "slotType": "midweek",
     "date": "2026-10-20",
-    "dateEnd": "2026-10-21",
     "category": "champions-league",
-    "label": "Champions League Matchday 3"
+    "label": "UEFA Champions League Matchday 3",
+    "kickoff": "20:00"
   },
   {
     "slotType": "weekend",
@@ -106,10 +113,10 @@
   },
   {
     "slotType": "midweek",
-    "date": "2026-11-03",
-    "dateEnd": "2026-11-04",
+    "date": "2026-11-04",
     "category": "champions-league",
-    "label": "Champions League Matchday 4"
+    "label": "UEFA Champions League Matchday 4",
+    "kickoff": "20:00"
   },
   {
     "slotType": "weekend",
@@ -135,9 +142,9 @@
   {
     "slotType": "midweek",
     "date": "2026-11-24",
-    "dateEnd": "2026-11-25",
     "category": "champions-league",
-    "label": "Champions League Matchday 5"
+    "label": "UEFA Champions League Matchday 5",
+    "kickoff": "20:00"
   },
   {
     "slotType": "weekend",
@@ -163,9 +170,9 @@
   {
     "slotType": "midweek",
     "date": "2026-12-08",
-    "dateEnd": "2026-12-09",
     "category": "champions-league",
-    "label": "Champions League Matchday 6"
+    "label": "UEFA Champions League Matchday 6",
+    "kickoff": "20:00"
   },
   {
     "slotType": "weekend",
@@ -239,10 +246,10 @@
   },
   {
     "slotType": "midweek",
-    "date": "2027-01-19",
-    "dateEnd": "2027-01-20",
+    "date": "2027-01-20",
     "category": "champions-league",
-    "label": "Champions League Matchday 7"
+    "label": "UEFA Champions League Matchday 7",
+    "kickoff": "20:00"
   },
   {
     "slotType": "weekend",
@@ -255,7 +262,8 @@
     "slotType": "midweek",
     "date": "2027-01-27",
     "category": "champions-league",
-    "label": "Champions League Matchday 8"
+    "label": "UEFA Champions League Matchday 8",
+    "kickoff": "20:00"
   },
   {
     "slotType": "weekend",
@@ -293,25 +301,11 @@
     "label": "FA Cup Fourth Round"
   },
   {
-    "slotType": "midweek",
-    "date": "2027-02-16",
-    "dateEnd": "2027-02-17",
-    "category": "champions-league",
-    "label": "Champions League Knockout Play-off 1st Leg"
-  },
-  {
     "slotType": "weekend",
     "date": "2027-02-20",
     "category": "premier-league",
     "label": "Newcastle (H)",
     "kickoff": "15:00"
-  },
-  {
-    "slotType": "midweek",
-    "date": "2027-02-23",
-    "dateEnd": "2027-02-24",
-    "category": "champions-league",
-    "label": "Champions League Knockout Play-off 2nd Leg"
   },
   {
     "slotType": "weekend",
@@ -335,25 +329,11 @@
     "label": "FA Cup Fifth Round"
   },
   {
-    "slotType": "midweek",
-    "date": "2027-03-09",
-    "dateEnd": "2027-03-10",
-    "category": "champions-league",
-    "label": "Champions League Round of 16 1st Leg"
-  },
-  {
     "slotType": "weekend",
     "date": "2027-03-13",
     "category": "premier-league",
     "label": "Coventry City (A)",
     "kickoff": "15:00"
-  },
-  {
-    "slotType": "midweek",
-    "date": "2027-03-16",
-    "dateEnd": "2027-03-17",
-    "category": "champions-league",
-    "label": "Champions League Round of 16 2nd Leg"
   },
   {
     "slotType": "weekend",
@@ -383,25 +363,11 @@
     "label": "FA Cup Quarter-Final"
   },
   {
-    "slotType": "midweek",
-    "date": "2027-04-06",
-    "dateEnd": "2027-04-07",
-    "category": "champions-league",
-    "label": "Champions League Quarter-Final 1st Leg"
-  },
-  {
     "slotType": "weekend",
     "date": "2027-04-10",
     "category": "premier-league",
     "label": "Bournemouth (A)",
     "kickoff": "15:00"
-  },
-  {
-    "slotType": "midweek",
-    "date": "2027-04-13",
-    "dateEnd": "2027-04-14",
-    "category": "champions-league",
-    "label": "Champions League Quarter-Final 2nd Leg"
   },
   {
     "slotType": "weekend",
@@ -425,25 +391,11 @@
     "label": "FA Cup Semi-Final"
   },
   {
-    "slotType": "midweek",
-    "date": "2027-04-27",
-    "dateEnd": "2027-04-28",
-    "category": "champions-league",
-    "label": "Champions League Semi-Final 1st Leg"
-  },
-  {
     "slotType": "weekend",
     "date": "2027-05-01",
     "category": "premier-league",
     "label": "Brentford (H)",
     "kickoff": "15:00"
-  },
-  {
-    "slotType": "midweek",
-    "date": "2027-05-04",
-    "dateEnd": "2027-05-05",
-    "category": "champions-league",
-    "label": "Champions League Semi-Final 2nd Leg"
   },
   {
     "slotType": "weekend",
@@ -478,11 +430,5 @@
     "category": "premier-league",
     "label": "Sunderland (A)",
     "kickoff": "16:00"
-  },
-  {
-    "slotType": "weekend",
-    "date": "2027-06-05",
-    "category": "champions-league",
-    "label": "Champions League Final"
   }
 ]

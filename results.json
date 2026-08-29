@@ -26,5 +26,33 @@
       "startingXI": [],
       "substitutions": []
     }
+  },
+  "2026-08-28_Crystal Palace_v_Man City": {
+    "date": "2026-08-28",
+    "matchId": 560555,
+    "homeTeam": "Crystal Palace",
+    "awayTeam": "Man City",
+    "isHome": false,
+    "score": {
+      "fullTime": {
+        "home": 1,
+        "away": 4
+      },
+      "halfTime": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
   }
 }
