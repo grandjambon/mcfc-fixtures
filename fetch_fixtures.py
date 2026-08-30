@@ -8,12 +8,19 @@ import time
 API_KEY = os.environ.get("FOOTBALL_DATA_API_KEY")
 TEAM_ID = 65  # Manchester City
 
+# Competition code -> site category.
+# NOTE: On the free football-data.org tier, only PL and CL are accessible for Man City.
+#   - FAC (FA Cup), CS (Community Shield) return 403 (not on free tier)
+#   - EFL Cup / Carabao Cup is NOT covered by the API at all
+#   - "ELC" in this API is the EFL *Championship* (2nd tier league), NOT the League Cup,
+#     so it must not be mapped here. City don't play in it anyway.
+# FA Cup, League Cup and Community Shield are therefore maintained manually via
+# ESTIMATED_CUP_ENTRIES / STATIC_ENTRIES and will not auto-update from the API.
 CATEGORY_MAP = {
     "PL": "premier-league",
     "CL": "champions-league",
-    "FAC": "fa-cup",
-    "ELC": "league-cup",
-    "CS": "community-shield",
+    "FAC": "fa-cup",          # not on free tier; kept in case of future upgrade
+    "CS": "community-shield",  # not on free tier; kept in case of future upgrade
 }
 
 STATIC_ENTRIES = [

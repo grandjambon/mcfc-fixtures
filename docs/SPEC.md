@@ -94,12 +94,16 @@ Countries included: england, scotland, wales, northern-ireland, republic-of-irel
 
 | Category | Colour | Source |
 |----------|--------|--------|
-| premier-league | Blue (#6cabdd) | API (live, 38 matches confirmed) |
+| premier-league | Blue (#6cabdd) | API (live, auto-updates) |
 | champions-league | Purple (#a366ff) | API when drawn; estimated dates as fallback |
-| fa-cup | Green (#66ff8c) | API when drawn; estimated round dates as fallback |
-| league-cup | Orange (#ffc966) | API when drawn; confirmed EFL round dates as fallback |
-| community-shield | Pink (#ff66a3) | Static entry (confirmed: Arsenal, Aug 16, Cardiff, 15:00 BST) |
+| fa-cup | Green (#66ff8c) | **Manual** — not on free API tier (FAC returns 403) |
+| league-cup | Orange (#ffc966) | **Manual** — Carabao Cup not covered by API at all |
+| community-shield | Pink (#ff66a3) | **Manual** static entry — not on free API tier (CS returns 403) |
 | international | Grey (#888) | Static entries with expandable panels |
+
+**Free-tier API coverage:** Only **PL** (Premier League) and **CL** (Champions League) auto-update for Man City. FA Cup, League Cup and Community Shield are maintained manually via `ESTIMATED_CUP_ENTRIES` / `STATIC_ENTRIES`.
+
+**Note on ELC:** In football-data.org, competition code `ELC` is the EFL **Championship** (2nd-tier league), *not* the League/EFL Cup. It must not be mapped to `league-cup`. The Carabao Cup has no code available on this API.
 
 ## API Integration
 
@@ -108,7 +112,7 @@ Countries included: england, scotland, wales, northern-ireland, republic-of-irel
 - Man City team ID: 65
 - Endpoint: `GET /v4/teams/65/matches?status=SCHEDULED,TIMED`
 - Auth: `X-Auth-Token` header
-- Competition codes: PL, CL, FAC, ELC, CS
+- Accessible competition codes (free tier, England + UEFA): PL, ELC (Championship), CL. FAC and CS return 403.
 
 **Update strategy (fetch_fixtures.py):**
 1. Pull all scheduled Man City matches from API
