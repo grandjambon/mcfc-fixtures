@@ -30,21 +30,39 @@ STATIC_ENTRIES = [
     {"slotType": "break", "date": "2027-03-22", "dateEnd": "2027-03-30", "category": "international", "label": "International Break"},
 ]
 
-# Estimated cup dates (used until real fixtures appear from API)
-# Round 3 is split across w/c Sep 7 and Sep 14; CL clubs (inc. City) play the second week.
+# ---------------------------------------------------------------------------
+# MANUAL CUP ENTRIES — FA Cup & Carabao (League) Cup
+# ---------------------------------------------------------------------------
+# These competitions are NOT available on the free football-data.org tier, so
+# they are maintained BY HAND here. As each round is drawn, update the relevant
+# entry with the confirmed opponent, date, venue (H/A/N) and kickoff.
+#
+# Format options:
+#   Confirmed tie:   {"slotType", "date", "category", "label": "Opponent (H) \u00b7 Carabao Cup R3", "kickoff": "19:30"}
+#   Unknown/TBC slot: {"slotType", "date", "dateEnd", "category", "label": "Carabao Cup Round 4 (TBC)"}
+#
+# Use a single "date" + "kickoff" once a tie is confirmed; use "date"+"dateEnd"
+# (a window) with no kickoff while the round is still an estimated slot.
+MANUAL_CUP_ENTRIES = [
+    # --- Carabao Cup ---
+    {"slotType": "midweek", "date": "2026-09-17", "category": "league-cup", "label": "Norwich (H) \u00b7 Carabao Cup R3", "kickoff": "19:30"},
+    {"slotType": "midweek", "date": "2026-10-27", "dateEnd": "2026-10-28", "category": "league-cup", "label": "Carabao Cup Round 4 (TBC)"},
+    {"slotType": "midweek", "date": "2026-12-15", "dateEnd": "2026-12-16", "category": "league-cup", "label": "Carabao Cup Quarter-Final (TBC)"},
+    {"slotType": "midweek", "date": "2027-01-12", "dateEnd": "2027-01-13", "category": "league-cup", "label": "Carabao Cup Semi-Final 1st Leg (TBC)"},
+    {"slotType": "midweek", "date": "2027-02-02", "dateEnd": "2027-02-03", "category": "league-cup", "label": "Carabao Cup Semi-Final 2nd Leg (TBC)"},
+    {"slotType": "weekend", "date": "2027-03-21", "category": "league-cup", "label": "Carabao Cup Final (Wembley, TBC)"},
+    # --- FA Cup ---
+    {"slotType": "weekend", "date": "2027-01-09", "dateEnd": "2027-01-10", "category": "fa-cup", "label": "FA Cup Third Round (TBC)"},
+    {"slotType": "weekend", "date": "2027-02-13", "dateEnd": "2027-02-14", "category": "fa-cup", "label": "FA Cup Fourth Round (TBC)"},
+    {"slotType": "weekend", "date": "2027-03-06", "dateEnd": "2027-03-07", "category": "fa-cup", "label": "FA Cup Fifth Round (TBC)"},
+    {"slotType": "weekend", "date": "2027-04-03", "dateEnd": "2027-04-04", "category": "fa-cup", "label": "FA Cup Quarter-Final (TBC)"},
+    {"slotType": "weekend", "date": "2027-04-24", "dateEnd": "2027-04-25", "category": "fa-cup", "label": "FA Cup Semi-Final (TBC)"},
+    {"slotType": "weekend", "date": "2027-05-22", "category": "fa-cup", "label": "FA Cup Final (TBC)"},
+]
+
+# Estimated Champions League dates — REPLACED automatically once the API returns
+# the real fixtures (CL is on the free tier). Kept as a fallback only.
 ESTIMATED_CUP_ENTRIES = [
-    {"slotType": "midweek", "date": "2026-09-15", "dateEnd": "2026-09-16", "category": "league-cup", "label": "Carabao Cup Round 3 (w/c 14 Sep \u2014 CL clubs' week)"},
-    {"slotType": "midweek", "date": "2026-10-27", "dateEnd": "2026-10-28", "category": "league-cup", "label": "Carabao Cup Round 4"},
-    {"slotType": "midweek", "date": "2026-12-15", "dateEnd": "2026-12-16", "category": "league-cup", "label": "Carabao Cup Quarter-Final"},
-    {"slotType": "midweek", "date": "2027-01-12", "dateEnd": "2027-01-13", "category": "league-cup", "label": "Carabao Cup Semi-Final 1st Leg"},
-    {"slotType": "midweek", "date": "2027-02-02", "dateEnd": "2027-02-03", "category": "league-cup", "label": "Carabao Cup Semi-Final 2nd Leg"},
-    {"slotType": "weekend", "date": "2027-03-21", "category": "league-cup", "label": "Carabao Cup Final (Wembley)"},
-    {"slotType": "weekend", "date": "2027-01-09", "dateEnd": "2027-01-10", "category": "fa-cup", "label": "FA Cup Third Round"},
-    {"slotType": "weekend", "date": "2027-02-13", "dateEnd": "2027-02-14", "category": "fa-cup", "label": "FA Cup Fourth Round"},
-    {"slotType": "weekend", "date": "2027-03-06", "dateEnd": "2027-03-07", "category": "fa-cup", "label": "FA Cup Fifth Round"},
-    {"slotType": "weekend", "date": "2027-04-03", "dateEnd": "2027-04-04", "category": "fa-cup", "label": "FA Cup Quarter-Final"},
-    {"slotType": "weekend", "date": "2027-04-24", "dateEnd": "2027-04-25", "category": "fa-cup", "label": "FA Cup Semi-Final"},
-    {"slotType": "weekend", "date": "2027-05-22", "category": "fa-cup", "label": "FA Cup Final"},
     {"slotType": "midweek", "date": "2026-09-08", "dateEnd": "2026-09-10", "category": "champions-league", "label": "Champions League Matchday 1"},
     {"slotType": "midweek", "date": "2026-10-13", "dateEnd": "2026-10-14", "category": "champions-league", "label": "Champions League Matchday 2"},
     {"slotType": "midweek", "date": "2026-10-20", "dateEnd": "2026-10-21", "category": "champions-league", "label": "Champions League Matchday 3"},
@@ -220,16 +238,21 @@ def main():
     api_fixtures = [build_fixture(m) for m in all_api_matches]
     api_categories = {f["category"] for f in api_fixtures}
 
-    # Only include estimated cup entries for categories NOT yet in API data
+    # Only include estimated CL entries for categories NOT yet in API data
     estimates = [e for e in ESTIMATED_CUP_ENTRIES if e["category"] not in api_categories]
     if estimates:
         print(f"  Adding {len(estimates)} estimated entries (categories not yet in API: {set(e['category'] for e in estimates)})")
+
+    # Manual cup entries (FA Cup, League Cup) — always included; never come from the API.
+    # Skip only if the API somehow provides that category (future-proof for a paid tier).
+    manual_cups = [e for e in MANUAL_CUP_ENTRIES if e["category"] not in api_categories]
+    print(f"  Adding {len(manual_cups)} manual cup entries (FA Cup / League Cup)")
 
     # Static entries: always include internationals, only include community-shield if not from API
     statics = [e for e in STATIC_ENTRIES if e["category"] == "international" or e["category"] not in api_categories]
 
     # Merge
-    merged = api_fixtures + statics + estimates
+    merged = api_fixtures + statics + estimates + manual_cups
     merged.sort(key=lambda f: f["date"])
 
     with open("fixtures.json", "w") as f:

@@ -119,15 +119,24 @@ Countries included: england, scotland, wales, northern-ireland, republic-of-irel
 2. Convert UTC times to UK local time (BST Mar-Oct, GMT Oct-Mar)
 3. Filter out placeholder kick-off times (00:00 and 12:00 UTC)
 4. Check which competition categories the API returned data for
-5. For categories NOT in API data, include estimated/static fallback entries
-6. Always include international breaks and Community Shield (unless API provides them)
-7. Sort by date, write to fixtures.json
-8. Pull all finished Man City matches from API (with 6s delay for rate limit)
-9. Extract score, goals, lineups, substitutions into result objects
-10. Merge with existing results.json (preserves history, overwrites duplicates)
-11. Write results.json
+5. For CL, include estimated fallback entries only if not yet in API data
+6. Always include manually-maintained FA Cup / League Cup entries (MANUAL_CUP_ENTRIES)
+7. Always include international breaks and Community Shield
+8. Sort by date, write to fixtures.json
+9. Pull all finished Man City matches from API (with 6s delay for rate limit)
+10. Extract score, goals, lineups, substitutions into result objects
+11. Merge with existing results.json (preserves history, overwrites duplicates)
+12. Write results.json
 
-**Key behaviour:** As draws happen (CL in Aug, cup rounds throughout season), real fixtures automatically replace the estimated placeholders because the API will return data for that category.
+**Key behaviour:**
+- **CL** fixtures auto-replace their estimated placeholders once the API returns them.
+- **FA Cup, League Cup, Community Shield** are NOT on the free tier, so they are
+  maintained by hand. Cup ties live in `MANUAL_CUP_ENTRIES` in `fetch_fixtures.py`
+  (not in fixtures.json, which the Action regenerates). As each round is drawn,
+  edit the relevant entry with the confirmed opponent, date, venue and kickoff,
+  then commit — the next run rebuilds fixtures.json with the update.
+  - Confirmed tie format: `Opponent (H) · Carabao Cup R3` + single `date` + `kickoff`
+  - Unknown slot format: `... Round 4 (TBC)` + `date`/`dateEnd` window, no kickoff
 
 ## GitHub Action
 
