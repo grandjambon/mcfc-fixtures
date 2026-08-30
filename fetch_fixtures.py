@@ -100,9 +100,21 @@ def build_fixture(match):
     elif category == "community-shield":
         label = f"{opponent} (N \u2013 Principality Stadium, Cardiff)"
     else:
+        # Cup competitions (CL, FA Cup, League Cup): show opponent + round context
         stage = (match.get("stage") or "").replace("_", " ").title()
         md = match.get("matchday")
-        label = f"{match['competition']['name']} {f'Matchday {md}' if md else stage}"
+        if category == "champions-league" and md:
+            context = f"CL MD{md}"
+        elif category == "champions-league":
+            context = f"CL {stage}" if stage else "Champions League"
+        elif category == "fa-cup":
+            context = f"FA Cup {stage}" if stage else "FA Cup"
+        elif category == "league-cup":
+            context = f"Carabao Cup {stage}" if stage else "Carabao Cup"
+        else:
+            context = match["competition"]["name"]
+        home_away = "H" if is_home else "A"
+        label = f"{opponent} ({home_away}) \u00b7 {context}"
 
     fixture = {
         "slotType": "weekend" if is_weekend(date) else "midweek",
