@@ -31,7 +31,7 @@
     "slotType": "midweek",
     "date": "2026-09-08",
     "category": "champions-league",
-    "label": "UEFA Champions League Matchday 1",
+    "label": "Porto (A) \u00b7 CL MD1",
     "kickoff": "20:00"
   },
   {
@@ -73,7 +73,7 @@
     "slotType": "midweek",
     "date": "2026-10-14",
     "category": "champions-league",
-    "label": "UEFA Champions League Matchday 2",
+    "label": "PSG (H) \u00b7 CL MD2",
     "kickoff": "20:00"
   },
   {
@@ -87,7 +87,7 @@
     "slotType": "midweek",
     "date": "2026-10-20",
     "category": "champions-league",
-    "label": "UEFA Champions League Matchday 3",
+    "label": "PAE AEK (H) \u00b7 CL MD3",
     "kickoff": "20:00"
   },
   {
@@ -115,7 +115,7 @@
     "slotType": "midweek",
     "date": "2026-11-04",
     "category": "champions-league",
-    "label": "UEFA Champions League Matchday 4",
+    "label": "RB Leipzig (A) \u00b7 CL MD4",
     "kickoff": "20:00"
   },
   {
@@ -143,7 +143,7 @@
     "slotType": "midweek",
     "date": "2026-11-24",
     "category": "champions-league",
-    "label": "UEFA Champions League Matchday 5",
+    "label": "Napoli (H) \u00b7 CL MD5",
     "kickoff": "20:00"
   },
   {
@@ -171,7 +171,7 @@
     "slotType": "midweek",
     "date": "2026-12-08",
     "category": "champions-league",
-    "label": "UEFA Champions League Matchday 6",
+    "label": "Bar\u00e7a (A) \u00b7 CL MD6",
     "kickoff": "20:00"
   },
   {
@@ -248,7 +248,7 @@
     "slotType": "midweek",
     "date": "2027-01-20",
     "category": "champions-league",
-    "label": "UEFA Champions League Matchday 7",
+    "label": "RC Lens (A) \u00b7 CL MD7",
     "kickoff": "20:00"
   },
   {
@@ -262,7 +262,7 @@
     "slotType": "midweek",
     "date": "2027-01-27",
     "category": "champions-league",
-    "label": "UEFA Champions League Matchday 8",
+    "label": "Sporting CP (H) \u00b7 CL MD8",
     "kickoff": "20:00"
   },
   {
