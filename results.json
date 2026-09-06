@@ -54,5 +54,33 @@
       "startingXI": [],
       "substitutions": []
     }
+  },
+  "2026-09-05_Man City_v_Coventry City": {
+    "date": "2026-09-05",
+    "matchId": 560563,
+    "homeTeam": "Man City",
+    "awayTeam": "Coventry City",
+    "isHome": true,
+    "score": {
+      "fullTime": {
+        "home": 1,
+        "away": 0
+      },
+      "halfTime": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
   }
 }
