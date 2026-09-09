@@ -82,5 +82,33 @@
       "startingXI": [],
       "substitutions": []
     }
+  },
+  "2026-09-08_Porto_v_Man City": {
+    "date": "2026-09-08",
+    "matchId": 575326,
+    "homeTeam": "Porto",
+    "awayTeam": "Man City",
+    "isHome": false,
+    "score": {
+      "fullTime": {
+        "home": 0,
+        "away": 2
+      },
+      "halfTime": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
   }
 }
