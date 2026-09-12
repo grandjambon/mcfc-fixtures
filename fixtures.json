@@ -200,28 +200,28 @@
     "date": "2026-12-26",
     "category": "premier-league",
     "label": "Newcastle (A)",
-    "kickoff": "15:00"
-  },
-  {
-    "slotType": "midweek",
-    "date": "2026-12-30",
-    "category": "premier-league",
-    "label": "Everton (A)",
     "kickoff": "20:00"
   },
   {
+    "slotType": "midweek",
+    "date": "2026-12-29",
+    "category": "premier-league",
+    "label": "Everton (A)",
+    "kickoff": "20:15"
+  },
+  {
     "slotType": "weekend",
-    "date": "2027-01-02",
+    "date": "2027-01-03",
     "category": "premier-league",
     "label": "Tottenham (H)",
-    "kickoff": "15:00"
+    "kickoff": "16:30"
   },
   {
     "slotType": "midweek",
     "date": "2027-01-06",
     "category": "premier-league",
     "label": "Leeds United (A)",
-    "kickoff": "20:00"
+    "kickoff": "20:15"
   },
   {
     "slotType": "weekend",
