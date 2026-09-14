@@ -110,5 +110,33 @@
       "startingXI": [],
       "substitutions": []
     }
+  },
+  "2026-09-13_Man United_v_Man City": {
+    "date": "2026-09-13",
+    "matchId": 560580,
+    "homeTeam": "Man United",
+    "awayTeam": "Man City",
+    "isHome": false,
+    "score": {
+      "fullTime": {
+        "home": 0,
+        "away": 1
+      },
+      "halfTime": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
   }
 }
