@@ -138,5 +138,33 @@
       "startingXI": [],
       "substitutions": []
     }
+  },
+  "2026-09-20_Man City_v_Sunderland": {
+    "date": "2026-09-20",
+    "matchId": 560590,
+    "homeTeam": "Man City",
+    "awayTeam": "Sunderland",
+    "isHome": true,
+    "score": {
+      "fullTime": {
+        "home": 5,
+        "away": 3
+      },
+      "halfTime": {
+        "home": 3,
+        "away": 2
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
   }
 }
