@@ -123,7 +123,7 @@
     "date": "2026-11-07",
     "category": "premier-league",
     "label": "Nottingham (A)",
-    "kickoff": "15:00"
+    "kickoff": "17:30"
   },
   {
     "slotType": "break",
@@ -137,7 +137,7 @@
     "date": "2026-11-21",
     "category": "premier-league",
     "label": "Fulham (H)",
-    "kickoff": "15:00"
+    "kickoff": "12:30"
   },
   {
     "slotType": "midweek",
@@ -148,10 +148,10 @@
   },
   {
     "slotType": "weekend",
-    "date": "2026-11-28",
+    "date": "2026-11-29",
     "category": "premier-league",
     "label": "Arsenal (A)",
-    "kickoff": "15:00"
+    "kickoff": "16:30"
   },
   {
     "slotType": "midweek",
