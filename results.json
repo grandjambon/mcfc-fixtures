@@ -55,6 +55,113 @@
       "substitutions": []
     }
   },
+  "2026-09-05_Man City_v_Coventry City": {
+    "date": "2026-09-05",
+    "matchId": 560563,
+    "homeTeam": "Man City",
+    "awayTeam": "Coventry City",
+    "isHome": true,
+    "score": {
+      "fullTime": {
+        "home": 1,
+        "away": 0
+      },
+      "halfTime": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
+  },
+  "2026-09-08_Porto_v_Man City": {
+    "date": "2026-09-08",
+    "matchId": 575326,
+    "homeTeam": "Porto",
+    "awayTeam": "Man City",
+    "isHome": false,
+    "score": {
+      "fullTime": {
+        "home": 0,
+        "away": 2
+      },
+      "halfTime": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
+  },
+  "2026-09-13_Man United_v_Man City": {
+    "date": "2026-09-13",
+    "matchId": 560580,
+    "homeTeam": "Man United",
+    "awayTeam": "Man City",
+    "isHome": false,
+    "score": {
+      "fullTime": {
+        "home": 0,
+        "away": 1
+      },
+      "halfTime": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
+  },
+  "2026-09-20_Man City_v_Sunderland": {
+    "date": "2026-09-20",
+    "matchId": 560590,
+    "homeTeam": "Man City",
+    "awayTeam": "Sunderland",
+    "isHome": true,
+    "score": {
+      "fullTime": {
+        "home": 5,
+        "away": 3
+      },
+      "halfTime": {
+        "home": 3,
+        "away": 2
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
+  },
   "2026-09-17_Man City_v_Norwich": {
     "date": "2026-09-17",
     "matchId": null,
