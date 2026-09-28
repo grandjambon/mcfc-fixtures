@@ -99,10 +99,10 @@
   },
   {
     "slotType": "midweek",
-    "date": "2026-10-27",
-    "dateEnd": "2026-10-28",
+    "date": "2026-10-28",
     "category": "league-cup",
-    "label": "Carabao Cup Round 4 (TBC)"
+    "label": "Brighton Hove (H) \u00b7 Carabao Cup R4",
+    "kickoff": "19:30"
   },
   {
     "slotType": "weekend",
