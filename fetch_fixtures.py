@@ -46,7 +46,7 @@ STATIC_ENTRIES = [
 MANUAL_CUP_ENTRIES = [
     # --- Carabao Cup ---
     {"slotType": "midweek", "date": "2026-09-17", "category": "league-cup", "label": "Norwich (H) \u00b7 Carabao Cup R3", "kickoff": "19:30"},
-    {"slotType": "midweek", "date": "2026-10-27", "dateEnd": "2026-10-28", "category": "league-cup", "label": "Carabao Cup Round 4 (TBC)"},
+    {"slotType": "midweek", "date": "2026-10-28", "category": "league-cup", "label": "Brighton Hove (H) \u00b7 Carabao Cup R4", "kickoff": "19:30"},
     {"slotType": "midweek", "date": "2026-12-15", "dateEnd": "2026-12-16", "category": "league-cup", "label": "Carabao Cup Quarter-Final (TBC)"},
     {"slotType": "midweek", "date": "2027-01-12", "dateEnd": "2027-01-13", "category": "league-cup", "label": "Carabao Cup Semi-Final 1st Leg (TBC)"},
     {"slotType": "midweek", "date": "2027-02-02", "dateEnd": "2027-02-03", "category": "league-cup", "label": "Carabao Cup Semi-Final 2nd Leg (TBC)"},
