@@ -194,5 +194,33 @@
       "startingXI": [],
       "substitutions": []
     }
+  },
+  "2026-10-11_Liverpool_v_Man City": {
+    "date": "2026-10-11",
+    "matchId": 560598,
+    "homeTeam": "Liverpool",
+    "awayTeam": "Man City",
+    "isHome": false,
+    "score": {
+      "fullTime": {
+        "home": 0,
+        "away": 3
+      },
+      "halfTime": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
   }
 }
