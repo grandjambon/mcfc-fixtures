@@ -222,5 +222,33 @@
       "startingXI": [],
       "substitutions": []
     }
+  },
+  "2026-10-14_Man City_v_PSG": {
+    "date": "2026-10-14",
+    "matchId": 575353,
+    "homeTeam": "Man City",
+    "awayTeam": "PSG",
+    "isHome": true,
+    "score": {
+      "fullTime": {
+        "home": 2,
+        "away": 4
+      },
+      "halfTime": {
+        "home": 0,
+        "away": 3
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
   }
 }
