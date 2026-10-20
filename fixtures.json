@@ -158,14 +158,14 @@
     "date": "2026-12-02",
     "category": "premier-league",
     "label": "Leeds United (H)",
-    "kickoff": "20:00"
+    "kickoff": "19:30"
   },
   {
     "slotType": "weekend",
     "date": "2026-12-05",
     "category": "premier-league",
     "label": "Brentford (A)",
-    "kickoff": "15:00"
+    "kickoff": "20:00"
   },
   {
     "slotType": "midweek",
@@ -179,7 +179,7 @@
     "date": "2026-12-12",
     "category": "premier-league",
     "label": "Chelsea (H)",
-    "kickoff": "15:00"
+    "kickoff": "17:30"
   },
   {
     "slotType": "midweek",
