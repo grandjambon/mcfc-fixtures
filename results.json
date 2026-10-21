@@ -278,5 +278,33 @@
       "startingXI": [],
       "substitutions": []
     }
+  },
+  "2026-10-20_Man City_v_PAE AEK": {
+    "date": "2026-10-20",
+    "matchId": 575361,
+    "homeTeam": "Man City",
+    "awayTeam": "PAE AEK",
+    "isHome": true,
+    "score": {
+      "fullTime": {
+        "home": 5,
+        "away": 1
+      },
+      "halfTime": {
+        "home": 2,
+        "away": 0
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
   }
 }
