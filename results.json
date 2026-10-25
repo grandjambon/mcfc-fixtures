@@ -306,5 +306,33 @@
       "startingXI": [],
       "substitutions": []
     }
+  },
+  "2026-10-24_Aston Villa_v_Man City": {
+    "date": "2026-10-24",
+    "matchId": 560614,
+    "homeTeam": "Aston Villa",
+    "awayTeam": "Man City",
+    "isHome": false,
+    "score": {
+      "fullTime": {
+        "home": 2,
+        "away": 1
+      },
+      "halfTime": {
+        "home": 1,
+        "away": 0
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
   }
 }

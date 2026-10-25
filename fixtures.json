@@ -91,6 +91,13 @@
     "kickoff": "20:00"
   },
   {
+    "slotType": "weekend",
+    "date": "2026-10-24",
+    "category": "premier-league",
+    "label": "Aston Villa (A)",
+    "kickoff": "12:30"
+  },
+  {
     "slotType": "midweek",
     "date": "2026-10-28",
     "category": "league-cup",
