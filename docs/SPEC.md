@@ -9,7 +9,7 @@ A static single-page website displaying all Manchester City 2026-27 fixtures acr
 ```
 index.html              → Single-page app (vanilla HTML/CSS/JS)
 fixtures.json           → Generated fixture data (written by fetch script + GitHub Action)
-results.json            → Generated match results (score, goals, lineups, subs)
+results.json            → API-generated match results plus manually maintained cup results
 internationals.json     → Static international break fixture panels
 fetch_fixtures.py       → Python script to pull data from football-data.org API
 .github/workflows/update-fixtures.yml → Daily cron job to regenerate fixtures.json + results.json
@@ -102,7 +102,7 @@ Countries included: england, scotland, wales, northern-ireland, republic-of-irel
 | community-shield | Pink (#ff66a3) | **Manual** static entry — not on free API tier (CS returns 403) |
 | international | Grey (#888) | Static entries with expandable panels |
 
-**Free-tier API coverage:** Only **PL** (Premier League) and **CL** (Champions League) auto-update for Man City. FA Cup, League Cup and Community Shield are maintained manually via `ESTIMATED_CUP_ENTRIES` / `STATIC_ENTRIES`.
+**Free-tier API coverage:** Only **PL** (Premier League) and **CL** (Champions League) auto-update for Man City. FA Cup and League Cup fixtures are maintained in `MANUAL_CUP_ENTRIES`; the Community Shield is maintained in `STATIC_ENTRIES`.
 
 **Note on ELC:** In football-data.org, competition code `ELC` is the EFL **Championship** (2nd-tier league), *not* the League/EFL Cup. It must not be mapped to `league-cup`. The Carabao Cup has no code available on this API.
 
@@ -140,6 +140,12 @@ Countries included: england, scotland, wales, northern-ireland, republic-of-irel
   venue and kickoff, then commit. The next run rebuilds fixtures.json with the update.
   - Confirmed tie format: `Opponent (H) · Carabao Cup R3` + single `date` + `kickoff`
   - Unknown slot format: `... Round 4 (TBC)` + `date`/`dateEnd` window, no kickoff
+- Cup results are also maintained manually in `results.json`. Add the full-time and
+  half-time scores after each match, plus `penalties` for a shootout. The fetch script
+  merges new API results into the existing file, so subsequent Action runs preserve
+  manually added cup results.
+- Before making a manual update, fetch or pull `origin/main`. The daily Action may
+  have committed newer generated fixture and result data since the previous session.
 
 ## GitHub Action
 
