@@ -184,9 +184,9 @@
   {
     "slotType": "midweek",
     "date": "2026-12-15",
-    "dateEnd": "2026-12-16",
     "category": "league-cup",
-    "label": "Carabao Cup Quarter-Final (TBC)"
+    "label": "Bradford City (H) \u00b7 Carabao Cup QF",
+    "kickoff": "20:00"
   },
   {
     "slotType": "weekend",

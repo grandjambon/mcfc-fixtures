@@ -56,7 +56,8 @@ Object keyed by `"{date}_{homeTeam}_v_{awayTeam}"`, each entry containing:
   "isHome": true,
   "score": {
     "fullTime": {"home": 3, "away": 1},
-    "halfTime": {"home": 1, "away": 0}
+    "halfTime": {"home": 1, "away": 0},
+    "penalties": {"home": 4, "away": 3}  // optional: shootout score
   },
   "goals": [
     {"minute": 12, "scorer": "Haaland", "team": "home", "type": "REGULAR"},
@@ -132,9 +133,11 @@ Countries included: england, scotland, wales, northern-ireland, republic-of-irel
 - **CL** fixtures auto-replace their estimated placeholders once the API returns them.
 - **FA Cup, League Cup, Community Shield** are NOT on the free tier, so they are
   maintained by hand. Cup ties live in `MANUAL_CUP_ENTRIES` in `fetch_fixtures.py`
-  (not in fixtures.json, which the Action regenerates). As each round is drawn,
-  edit the relevant entry with the confirmed opponent, date, venue and kickoff,
-  then commit — the next run rebuilds fixtures.json with the update.
+  (not in fixtures.json, which the Action regenerates). Verify cup fixtures against
+  the official [Manchester City fixtures page](https://www.mancity.com/fixtures).
+  Keep the football-data.org API as the source for competitions it covers. As each
+  cup round is drawn, edit the relevant entry with the confirmed opponent, date,
+  venue and kickoff, then commit. The next run rebuilds fixtures.json with the update.
   - Confirmed tie format: `Opponent (H) · Carabao Cup R3` + single `date` + `kickoff`
   - Unknown slot format: `... Round 4 (TBC)` + `date`/`dateEnd` window, no kickoff
 
@@ -149,6 +152,7 @@ Countries included: england, scotland, wales, northern-ireland, republic-of-irel
 
 ### Completed Fixtures (Results)
 - Fixtures with a result show the score inline (e.g. `3-1`) next to the label
+- Shootout results include the penalty score inline and identify the winner in the expanded panel
 - Clicking expands a panel below showing:
   - Full score line with team names: `Man City 3 - 1 Bournemouth`
   - Half-time score: `HT: 1-0`

@@ -210,6 +210,7 @@
         function renderResultPanel(result, panelId) {
             const ht = result.score.halfTime;
             const ft = result.score.fullTime;
+            const penalties = result.score.penalties;
 
             let html = `<div class="result-panel" id="${panelId}">`;
 
@@ -220,6 +221,10 @@
                 <span class="team-name">${result.awayTeam}</span>
             </div>`;
             html += `<div class="result-ht">HT: ${ht.home} - ${ht.away}</div>`;
+            if (penalties) {
+                const winner = penalties.home > penalties.away ? result.homeTeam : result.awayTeam;
+                html += `<div class="result-ht">${winner} win ${penalties.home} - ${penalties.away} on penalties</div>`;
+            }
 
             // Goals
             const homeGoals = result.goals.filter(g => g.team === 'home');
@@ -348,7 +353,8 @@
                 } else if (result) {
                     const pid = `result-panel-${panelIndex++}`;
                     const ft = result.score.fullTime;
-                    const scoreText = `${ft.home}-${ft.away}`;
+                    const penalties = result.score.penalties;
+                    const scoreText = `${ft.home}-${ft.away}${penalties ? ` (${penalties.home}-${penalties.away} pens)` : ''}`;
                     html += `<div class="fixture ${f.category} has-result" onclick="document.getElementById('${pid}').classList.toggle('open')">
                         <span class="slot-type">${f.slotType}</span>
                         <span class="date">${dateCol}</span>

@@ -362,5 +362,62 @@
       "startingXI": [],
       "substitutions": []
     }
+  },
+  "2026-10-28_Man City_v_Brighton": {
+    "date": "2026-10-28",
+    "matchId": null,
+    "homeTeam": "Man City",
+    "awayTeam": "Brighton",
+    "isHome": true,
+    "score": {
+      "fullTime": {
+        "home": 2,
+        "away": 2
+      },
+      "halfTime": {
+        "home": 1,
+        "away": 1
+      },
+      "penalties": {
+        "home": 4,
+        "away": 3
+      }
+    },
+    "goals": [
+      {
+        "minute": 30,
+        "scorer": "Malick Yalcouy\u00e9",
+        "team": "away",
+        "type": "REGULAR"
+      },
+      {
+        "minute": 40,
+        "scorer": "Mateo Kova\u010di\u0107",
+        "team": "home",
+        "type": "REGULAR"
+      },
+      {
+        "minute": 47,
+        "scorer": "Georginio Rutter",
+        "team": "away",
+        "type": "REGULAR"
+      },
+      {
+        "minute": 72,
+        "scorer": "Vitor Reis",
+        "team": "home",
+        "type": "REGULAR"
+      }
+    ],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
   }
 }

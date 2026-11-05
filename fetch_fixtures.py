@@ -47,7 +47,7 @@ MANUAL_CUP_ENTRIES = [
     # --- Carabao Cup ---
     {"slotType": "midweek", "date": "2026-09-17", "category": "league-cup", "label": "Norwich (H) \u00b7 Carabao Cup R3", "kickoff": "19:30"},
     {"slotType": "midweek", "date": "2026-10-28", "category": "league-cup", "label": "Brighton Hove (H) \u00b7 Carabao Cup R4", "kickoff": "19:30"},
-    {"slotType": "midweek", "date": "2026-12-15", "dateEnd": "2026-12-16", "category": "league-cup", "label": "Carabao Cup Quarter-Final (TBC)"},
+    {"slotType": "midweek", "date": "2026-12-15", "category": "league-cup", "label": "Bradford City (H) \u00b7 Carabao Cup QF", "kickoff": "20:00"},
     {"slotType": "midweek", "date": "2027-01-12", "dateEnd": "2027-01-13", "category": "league-cup", "label": "Carabao Cup Semi-Final 1st Leg (TBC)"},
     {"slotType": "midweek", "date": "2027-02-02", "dateEnd": "2027-02-03", "category": "league-cup", "label": "Carabao Cup Semi-Final 2nd Leg (TBC)"},
     {"slotType": "weekend", "date": "2027-03-21", "category": "league-cup", "label": "Carabao Cup Final (Wembley, TBC)"},
@@ -173,6 +173,10 @@ def build_result(match):
             "halfTime": match["score"]["halfTime"],
         },
     }
+
+    penalties = match["score"].get("penalties")
+    if penalties and penalties.get("home") is not None and penalties.get("away") is not None:
+        result["score"]["penalties"] = penalties
 
     # Goals
     goals = []
