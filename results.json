@@ -419,5 +419,33 @@
       "startingXI": [],
       "substitutions": []
     }
+  },
+  "2026-11-04_RB Leipzig_v_Man City": {
+    "date": "2026-11-04",
+    "matchId": 575388,
+    "homeTeam": "RB Leipzig",
+    "awayTeam": "Man City",
+    "isHome": false,
+    "score": {
+      "fullTime": {
+        "home": 2,
+        "away": 3
+      },
+      "halfTime": {
+        "home": 0,
+        "away": 1
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
   }
 }
