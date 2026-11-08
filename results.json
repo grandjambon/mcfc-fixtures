@@ -447,5 +447,33 @@
       "startingXI": [],
       "substitutions": []
     }
+  },
+  "2026-11-07_Nottingham_v_Man City": {
+    "date": "2026-11-07",
+    "matchId": 560641,
+    "homeTeam": "Nottingham",
+    "awayTeam": "Man City",
+    "isHome": false,
+    "score": {
+      "fullTime": {
+        "home": 3,
+        "away": 1
+      },
+      "halfTime": {
+        "home": 2,
+        "away": 0
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
   }
 }
