@@ -256,7 +256,7 @@
     "date": "2027-01-23",
     "category": "premier-league",
     "label": "Brighton Hove (A)",
-    "kickoff": "15:00"
+    "kickoff": "20:00"
   },
   {
     "slotType": "midweek",
@@ -267,10 +267,10 @@
   },
   {
     "slotType": "weekend",
-    "date": "2027-01-30",
+    "date": "2027-01-31",
     "category": "premier-league",
     "label": "Arsenal (H)",
-    "kickoff": "15:00"
+    "kickoff": "16:30"
   },
   {
     "slotType": "midweek",
