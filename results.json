@@ -503,5 +503,33 @@
       "startingXI": [],
       "substitutions": []
     }
+  },
+  "2026-11-24_Man City_v_Napoli": {
+    "date": "2026-11-24",
+    "matchId": 575398,
+    "homeTeam": "Man City",
+    "awayTeam": "Napoli",
+    "isHome": true,
+    "score": {
+      "fullTime": {
+        "home": 2,
+        "away": 2
+      },
+      "halfTime": {
+        "home": 0,
+        "away": 0
+      }
+    },
+    "goals": [],
+    "homeLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    },
+    "awayLineup": {
+      "formation": null,
+      "startingXI": [],
+      "substitutions": []
+    }
   }
 }
